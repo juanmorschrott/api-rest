@@ -1,5 +1,5 @@
 <div class="col-md-6">
-  <h2 class="text-center">Add User</h2>
+  <h2 class="text-center">Add Hotel</h2>
   <form [formGroup]="addForm" (ngSubmit)="onSubmit()">
     <div class="form-group">
       <label for="name">Name:</label>
@@ -11,12 +11,10 @@
       <input formControlName="description" placeholder="Descriptions" name="description" class="form-control" id="description">
     </div>
 
-    <!--
     <div class="form-group">
-      <label for="lastName">Last Name:</label>
-      <input formControlName="lastName" placeholder="Last name" name="lastName" class="form-control" id="lastName">
+      <label for="price">Price:</label>
+      <input formControlName="price" placeholder="Price" name="price" class="form-control" id="price">
     </div>
-    -->
 
     <button class="btn btn-success">Update</button>
   </form>

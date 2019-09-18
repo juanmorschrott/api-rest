@@ -16,6 +16,6 @@ public interface HotelService {
 
     Hotel update(Hotel hotel);
 
-    void delete(Hotel hotel);
+    void delete(Long id);
 
 }
