@@ -1,9 +1,9 @@
-import {Component, OnInit} from '@angular/core';
-import {Hotel} from '../model/hotel.model';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {Router} from '@angular/router';
-import {HotelService} from '../service/hotel.service';
-import {first} from 'rxjs/operators';
+import { Component, OnInit } from '@angular/core';
+import { Hotel } from '../model/hotel.model';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { HotelService } from '../service/hotel.service';
+import { first } from 'rxjs/operators';
 
 @Component({
   selector: 'app-edit-hotel',
@@ -15,8 +15,7 @@ export class EditHotelComponent implements OnInit {
   hotel: Hotel;
   editForm: FormGroup;
 
-  constructor(private formBuilder: FormBuilder, private router: Router, private hotelService: HotelService) {
-  }
+  constructor(private formBuilder: FormBuilder, private router: Router, private hotelService: HotelService) { }
 
   ngOnInit() {
     const hotelId = localStorage.getItem('editHotelId');

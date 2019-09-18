@@ -9,13 +9,15 @@ import { ListHotelComponent } from './list-hotel/list-hotel.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { HotelService } from './service/hotel.service';
+import { HotelDetailComponent } from './hotel-detail/hotel-detail.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     AddHotelComponent,
     EditHotelComponent,
-    ListHotelComponent
+    ListHotelComponent,
+    HotelDetailComponent
   ],
   imports: [
     BrowserModule,
