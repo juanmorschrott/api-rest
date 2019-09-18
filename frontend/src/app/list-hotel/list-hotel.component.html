@@ -1,6 +1,9 @@
-<div class="col-md-6">
+<div class="col-md-12">
   <h2> Hotel Details</h2>
+  <hr/>
   <button class="btn btn-danger" (click)="addHotel()"> Add Hotel</button>
+  <hr/>
+
   <table class="table table-striped">
     <thead>
     <tr>
@@ -20,6 +23,7 @@
       <td>
         <button class="btn btn-danger" (click)="deleteHotel(hotel)"> Delete</button>
         <button class="btn btn-danger" (click)="editHotel(hotel)" style="margin-left: 20px;"> Edit</button>
+        <button class="btn btn-info" (click)="hotelDetails(hotel)" style="margin-left: 10px"> Details</button>
       </td>
     </tr>
     </tbody>
