@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@CrossOrigin(origins = "http://localhost:4200")
 @RestController
 @RequestMapping(value = "/api/v1/hotels")
 public class HotelController {
@@ -20,7 +21,6 @@ public class HotelController {
         this.service = service;
     }
 
-    @CrossOrigin(origins = "http://localhost:4200")
     @GetMapping
     public List<Hotel> list() {
         return service.list();
@@ -31,23 +31,20 @@ public class HotelController {
         return service.create(hotel);
     }
 
-    @CrossOrigin(origins = "http://localhost:4200")
     @GetMapping(value = "/{id}")
     public Hotel get(@PathVariable Long id) {
         return service.get(id);
     }
 
-    @CrossOrigin(origins = "http://localhost:4200")
     @PutMapping
     public Hotel update(@RequestBody Hotel hotel) {
         return service.update(hotel);
     }
 
-    @CrossOrigin(origins = "http://localhost:4200")
-    @DeleteMapping
-    public ResponseEntity delete(@RequestBody Hotel hotel) {
+    @DeleteMapping(value = "/{id}")
+    public ResponseEntity delete(@PathVariable Long id) {
         try {
-            service.delete(hotel);
+            service.delete(id);
             return new ResponseEntity(HttpStatus.OK);
         } catch (Exception e) {
             return new ResponseEntity(HttpStatus.NOT_FOUND);

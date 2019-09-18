@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {HotelService} from '../service/hotel.service';
-import {Router} from '@angular/router';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import { HotelService } from '../service/hotel.service';
+import { Router } from '@angular/router';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-add-hotel',
@@ -10,7 +10,7 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 })
 export class AddHotelComponent implements OnInit {
 
-  constructor(private formBuilder: FormBuilder, private router: Router, private userService: HotelService) { }
+  constructor(private formBuilder: FormBuilder, private router: Router, private hotelService: HotelService) { }
 
   addForm: FormGroup;
 
@@ -19,12 +19,12 @@ export class AddHotelComponent implements OnInit {
       id: [],
       name: ['', Validators.required],
       description: ['', Validators.required],
-      // lastName: ['', Validators.required]
+      price: ['', Validators.required]
     });
   }
 
   onSubmit() {
-    this.userService.createHotel(this.addForm.value)
+    this.hotelService.createHotel(this.addForm.value)
       .subscribe( data => {
         this.router.navigate(['list-hotel']);
       });

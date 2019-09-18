@@ -5,22 +5,14 @@ import {Hotel} from '../model/hotel.model';
 @Injectable()
 export class HotelService {
   constructor(private http: HttpClient) { }
-  baseUrl = 'http://localhost:8080/api/v1/hotels';
+  baseUrl = 'http://localhost:8080/api/v1/hotels/';
 
   getHotels() {
-    return this.http.get<Hotel[]>(this.baseUrl + '/');
+    return this.http.get<Hotel[]>(this.baseUrl);
   }
 
   getHotelById(id: string) {
-    return this.http.get(this.baseUrl + '/' + id);
-  }
-
-  getHotelByName(name: string) {
-    return this.http.get<Hotel>(this.baseUrl, {
-      params: {
-        name
-      }
-    });
+    return this.http.get(this.baseUrl + id);
   }
 
   createHotel(hotel: Hotel) {
@@ -28,10 +20,10 @@ export class HotelService {
   }
 
   updateHotel(hotel: Hotel) {
-    return this.http.put(this.baseUrl + '/', hotel);
+    return this.http.put(this.baseUrl, hotel);
   }
 
   deleteHotel(id: number) {
-    return this.http.delete(this.baseUrl + '/' + id);
+    return this.http.delete(this.baseUrl + id);
   }
 }

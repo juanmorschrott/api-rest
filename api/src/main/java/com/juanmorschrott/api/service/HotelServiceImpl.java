@@ -3,9 +3,12 @@ package com.juanmorschrott.api.service;
 import com.juanmorschrott.api.model.Hotel;
 import com.juanmorschrott.api.repository.HotelRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class HotelServiceImpl implements HotelService {
@@ -41,8 +44,9 @@ public class HotelServiceImpl implements HotelService {
     }
 
     @Override
-    public void delete(Hotel hotel) {
-        repository.delete(hotel);
+    public void delete(Long id) {
+        Optional<Hotel> hotel = repository.findById(id);
+        hotel.ifPresent(value -> repository.delete(value));
     }
 
 }
