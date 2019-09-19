@@ -16,7 +16,10 @@ Aplicación WEB CRUD Spring-boot con base de datos H2.
 
 Ejecutar: 
 
-```./mvnw spring-boot:run```
+```
+./mvnw clean install
+./mvnw spring-boot:run
+```
 
 BASE-URL:   http://localhost:8080/api/v1/hotels
 
@@ -33,6 +36,9 @@ Aplicación Angular
 
 Ejecutar: 
 
-```ng serve```
+```
+npm install
+ng serve
+```
 
 URL:   http://localhost:4200
