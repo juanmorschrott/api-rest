@@ -70,8 +70,8 @@ public class HotelControllerWithContextIntegrationTest {
                 get("/api/v1/hotels/1").accept(MediaType.APPLICATION_JSON)).andReturn().getResponse();
 
         // then
-        assertThat(response.getStatus()).isEqualTo(HttpStatus.OK.value());
-        assertThat(response.getContentAsString()).isEmpty();
+        assertThat(response.getStatus()).isEqualTo(HttpStatus.NOT_FOUND.value());
+        assertThat(response.getContentAsString()).isEqualTo("Hotel not found");
     }
 
 }
