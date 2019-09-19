@@ -18,6 +18,7 @@ export class ListHotelComponent implements OnInit {
   ngOnInit() {
     this.hotelService.getHotels()
       .subscribe(data => {
+        console.log(data);
         this.hotels = data;
       });
   }

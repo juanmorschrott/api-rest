@@ -30,6 +30,10 @@ BASE-URL:   http://localhost:8080/api/v1/hotels
 |UPDATE|PUT|http://localhost:8080/api/v1/hotels|
 |DELETE|DELETE|http://localhost:8080/api/v1/hotels/{id}|
 
+Swagger API Documentation:
+
+[documentation](http://localhost:8080/swagger-ui.html)
+
 ### Frontend
 
 Aplicación Angular

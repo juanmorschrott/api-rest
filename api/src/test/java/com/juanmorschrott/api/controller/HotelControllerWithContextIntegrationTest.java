@@ -22,6 +22,9 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.mockito.BDDMockito.given;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 
+/**
+ * Integration test with Spring Application Context using MockMvc
+ */
 @RunWith(SpringRunner.class)
 @WebMvcTest(HotelController.class)
 public class HotelControllerWithContextIntegrationTest {

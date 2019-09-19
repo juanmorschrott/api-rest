@@ -30,3 +30,7 @@ build/
 ### VS Code ###
 .vscode/
 
+### DB File ###
+hotel.mv.db
+hotel.trace.db
+
