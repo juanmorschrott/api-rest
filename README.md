@@ -32,7 +32,7 @@ BASE-URL:   http://localhost:8080/api/v1/hotels
 
 API Documentation:
 
-[documentation](http://localhost:8080/swagger-ui.html)
+[http://localhost:8080/swagger-ui.html](http://localhost:8080/swagger-ui.html)
 
 ### Frontend
 
