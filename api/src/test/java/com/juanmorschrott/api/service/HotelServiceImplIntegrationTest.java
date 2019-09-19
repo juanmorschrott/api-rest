@@ -5,7 +5,6 @@ import com.juanmorschrott.api.repository.HotelRepository;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.TestConfiguration;
 import org.springframework.boot.test.mock.mockito.MockBean;
@@ -17,6 +16,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import static org.assertj.core.api.AssertionsForInterfaceTypes.assertThat;
+import static org.mockito.Mockito.when;
 
 @RunWith(SpringRunner.class)
 public class HotelServiceImplIntegrationTest {
@@ -27,14 +27,11 @@ public class HotelServiceImplIntegrationTest {
     @MockBean
     private HotelRepository hotelRepository;
 
+    private Hotel hotel = null;
+
     @Before
     public void setUp() {
-        Hotel hotel = new Hotel(1, "Test Name", "Test Description", BigDecimal.valueOf(99.9));
-
-        Mockito.when(hotelRepository.findAll()).thenReturn(getHotelsArray());
-        Mockito.when(hotelRepository.findById(hotel.getId())).thenReturn(java.util.Optional.of(hotel));
-        Mockito.when(hotelRepository.findByName(hotel.getName())).thenReturn(java.util.Optional.of(hotel));
-        Mockito.when(hotelRepository.save(hotel)).thenReturn(hotel);
+        hotel = new Hotel(1, "Test Name", "Test Description", BigDecimal.valueOf(99.9));
     }
 
     private List<Hotel> getHotelsArray() {
@@ -54,6 +51,7 @@ public class HotelServiceImplIntegrationTest {
     @Test
     public void whenList_thenHotelShouldReturnAllValues() {
         // when
+        when(hotelRepository.findAll()).thenReturn(getHotelsArray());
         List<Hotel> hotels = hotelService.list();
 
         // then
@@ -64,6 +62,7 @@ public class HotelServiceImplIntegrationTest {
     @Test
     public void whenValidId_thenHotelShouldBeFound() {
         // when
+        when(hotelRepository.findById(hotel.getId())).thenReturn(java.util.Optional.of(hotel));
         Hotel found = hotelService.get(1L);
 
         // then
@@ -76,6 +75,7 @@ public class HotelServiceImplIntegrationTest {
         String name = "Test Name";
 
         // when
+        when(hotelRepository.findByName(hotel.getName())).thenReturn(java.util.Optional.of(hotel));
         Hotel found = hotelService.getByName(name);
 
         // then

@@ -21,6 +21,9 @@ import java.util.List;
 import static org.assertj.core.api.AssertionsForInterfaceTypes.assertThat;
 import static org.mockito.BDDMockito.given;
 
+/**
+ * Integration test using TestRestTemplate
+ */
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class HotelControllerIntegrationTest {
@@ -77,19 +80,6 @@ public class HotelControllerIntegrationTest {
     }
 
     @Test
-    public void whenFindByName_thenReturnHotel() throws Exception {
-        // given
-        given(hotelService.get(1L)).willReturn(new Hotel(1, "Foo", "Test Description", BigDecimal.valueOf(99.9)));
-
-        // when
-        ResponseEntity<Hotel> response = restTemplate.getForEntity("/api/v1/hotels/Foo", Hotel.class);
-
-        // then
-        assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
-        assertThat(response.getBody().equals(new Hotel(1, "Foo", "Test Description", BigDecimal.valueOf(99.9))));
-    }
-
-    @Test
     public void whenUpdate_thenReturnUpdatedHotel() throws Exception {
         // given
         Hotel hotel = new Hotel(1, "Foo", "Test Description", BigDecimal.valueOf(99.9));
@@ -110,19 +100,6 @@ public class HotelControllerIntegrationTest {
         // then
         assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
         assertThat(response.getBody().getName().equals(updatedHotel.getName()));
-    }
-
-    @Test
-    public void whenFindByName_thenReturnEmptyStringIfNotExists() throws Exception {
-        // given
-        given(hotelService.getByName("Test")).willReturn(null);
-
-        // when
-        ResponseEntity<Hotel> response = restTemplate.getForEntity("/api/v1/hotels/Test", Hotel.class);
-
-        // then
-        assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
-        assertThat(response.getBody()).isNull();
     }
 
 }
