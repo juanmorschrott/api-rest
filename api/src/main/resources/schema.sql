@@ -4,6 +4,6 @@ CREATE TABLE hotel (
     id INTEGER NOT NULL AUTO_INCREMENT,
     name VARCHAR(100) NOT NULL,
     description VARCHAR(250) NOT NULL,
-    price BIGINT NOT NULL,
+    price DOUBLE NOT NULL,
     PRIMARY KEY (id)
 );
