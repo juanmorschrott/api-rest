@@ -2,10 +2,6 @@
 
 API Rest para pruebas y Single Page Application.
 
-Ejecución rápida desde sistema linux con bash:
-
-```./start.sh```
-
 ## Dependencias
 
  - Java openjdk version "1.8.0_222"
@@ -17,7 +13,10 @@ Ejecución rápida desde sistema linux con bash:
 ### Backend
 
 Aplicación WEB CRUD Spring-boot con base de datos H2.
-Ejecutar: ./mvnw spring-boot:run
+
+Ejecutar: 
+
+```./mvnw spring-boot:run```
 
 BASE-URL:   http://localhost:8080/api/v1/hotels
 

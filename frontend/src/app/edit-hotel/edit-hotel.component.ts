@@ -18,7 +18,7 @@ export class EditHotelComponent implements OnInit {
   constructor(private formBuilder: FormBuilder, private router: Router, private hotelService: HotelService) { }
 
   ngOnInit() {
-    const hotelId = localStorage.getItem('editHotelId');
+    const hotelId = +localStorage.getItem('editHotelId');
     if (!hotelId) {
       alert('Invalid action.');
       this.router.navigate(['list-hotel']);

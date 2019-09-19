@@ -2,5 +2,5 @@ export class Hotel {
   id: number;
   name: string;
   description: string;
-  price: string;
+  price: number;
 }

@@ -39,7 +39,7 @@ export class ListHotelComponent implements OnInit {
     this.router.navigate(['add-hotel']);
   }
 
-  hotelDetails(hotel:Hotel) {
+  hotelDetails(hotel: Hotel) {
     localStorage.removeItem('hotelDetailId');
     localStorage.setItem('hotelDetailId', hotel.id.toString());
     this.router.navigate(['hotel-detail']);

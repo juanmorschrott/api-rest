@@ -10,7 +10,7 @@
       <th class="hidden">Id</th>
       <th>Name</th>
       <th>Description</th>
-      <th>Price</th>
+      <th>Mean Price</th>
       <th>Action</th>
     </tr>
     </thead>
@@ -19,7 +19,7 @@
       <td class="hidden">{{hotel.id}}</td>
       <td>{{hotel.name}}</td>
       <td>{{hotel.description}}</td>
-      <td>{{hotel.price}}</td>
+      <td>{{hotel.price | number | currency:'EUR'}}</td>
       <td>
         <button class="btn btn-danger" (click)="deleteHotel(hotel)"> Delete</button>
         <button class="btn btn-danger" (click)="editHotel(hotel)" style="margin-left: 20px;"> Edit</button>

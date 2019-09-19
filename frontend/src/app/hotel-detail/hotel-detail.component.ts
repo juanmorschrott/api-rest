@@ -17,13 +17,13 @@ export class HotelDetailComponent implements OnInit {
 
   ngOnInit() {
     this.hotel = new Hotel();
-    const hotelId = localStorage.getItem('hotelDetailId');
+    const hotelId = +localStorage.getItem('hotelDetailId');
     if (!hotelId) {
       alert('Invalid action.');
       this.router.navigate(['list-hotel']);
       return;
     }
-    
+
     this.hotelService.getHotelById(hotelId)
       .subscribe(data => {
         console.log(data);
