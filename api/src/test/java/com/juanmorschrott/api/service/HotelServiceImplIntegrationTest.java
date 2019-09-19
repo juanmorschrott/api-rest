@@ -41,9 +41,9 @@ public class HotelServiceImplIntegrationTest {
     }
 
     @TestConfiguration
-    static class EmployeeServiceImplTestContextConfiguration {
+    static class HotelServiceImplTestContextConfiguration {
         @Bean
-        public HotelService employeeService() {
+        public HotelService hotelService() {
             return new HotelServiceImpl();
         }
     }
