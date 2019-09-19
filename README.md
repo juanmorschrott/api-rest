@@ -1,6 +1,6 @@
 # Api-rest
 
-API Rest para pruebas y Single Page Application.
+Simple API Rest y Single Page Application.
 
 ## Dependencias
 
@@ -30,13 +30,13 @@ BASE-URL:   http://localhost:8080/api/v1/hotels
 |UPDATE|PUT|http://localhost:8080/api/v1/hotels|
 |DELETE|DELETE|http://localhost:8080/api/v1/hotels/{id}|
 
-Swagger API Documentation:
+API Documentation:
 
 [documentation](http://localhost:8080/swagger-ui.html)
 
 ### Frontend
 
-Aplicación Angular
+Aplicación Angular CRUD
 
 Ejecutar: 
 
@@ -46,3 +46,4 @@ ng serve
 ```
 
 URL:   http://localhost:4200
+
