@@ -2,7 +2,7 @@ import {HotelService} from './hotel.service';
 import {Hotel} from '../model/hotel.model';
 import {asyncData} from './async-observable-helpers';
 
-fdescribe('ValueService', () => {
+fdescribe('HotelService', () => {
   let hotelService: HotelService;
   let httpClientSpy: { get: jasmine.Spy };
   const expectedHotels: Hotel[] = [{'id': 1, 'name': 'Atenea', 'description': 'Hotel económico y confortable', 'price': 35},
@@ -18,7 +18,7 @@ fdescribe('ValueService', () => {
     expect(hotelService).toBeTruthy();
   });
 
-  it('should get a list of hotels', () => {  
+  it('should get a list of hotels', () => {
     httpClientSpy.get.and.returnValue(asyncData(expectedHotels));
 
     hotelService.getHotels().subscribe(hotels => {
