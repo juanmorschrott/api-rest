@@ -5,10 +5,10 @@ import { HotelService } from '../service/hotel.service';
 
 @Component({
   selector: 'app-hotel-detail',
-  templateUrl: './hotel-detail.component.html',
-  styleUrls: ['./hotel-detail.component.css']
+  templateUrl: './detail-hotel.component.html',
+  styleUrls: ['./detail-hotel.component.css']
 })
-export class HotelDetailComponent implements OnInit {
+export class DetailHotelComponent implements OnInit {
 
   id: string;
   hotel: any;
