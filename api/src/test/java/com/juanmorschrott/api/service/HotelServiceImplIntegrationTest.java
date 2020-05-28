@@ -91,7 +91,7 @@ public class HotelServiceImplIntegrationTest {
         Hotel hotel = hotelService.getByName(name);
 
         // then
-        assertThat(hotelService.getByName(name)).isNull();
+        assertThat(hotel).isNull();
     }
 
 }
