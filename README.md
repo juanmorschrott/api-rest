@@ -5,6 +5,7 @@ Simple API Rest y Single Page Application.
 ## Dependencias
 
  - Java openjdk version "1.8.0_222"
+ - Lombok plugin installed in your IDE
  - Node v10.16.3
     - @angular/cli
 

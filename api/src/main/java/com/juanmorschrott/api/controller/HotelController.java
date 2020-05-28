@@ -53,12 +53,12 @@ public class HotelController {
 
     @ApiOperation(value = "Find an hotel", response = ResponseEntity.class)
     @GetMapping(value = "/{id}")
-    public ResponseEntity get(@PathVariable Long id) {
+    public ResponseEntity<Hotel> get(@PathVariable Long id) {
         Hotel hotel = service.get(id);
         if (hotel != null) {
             return new ResponseEntity<>(hotel, HttpStatus.OK);
         } else {
-            return new ResponseEntity("Hotel not found", HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
 
@@ -75,12 +75,12 @@ public class HotelController {
 
     @ApiOperation(value = "Delete an hotel", response = ResponseEntity.class)
     @DeleteMapping(value = "/{id}")
-    public ResponseEntity delete(@PathVariable Long id) {
+    public ResponseEntity<String> delete(@PathVariable Long id) {
         try {
             service.delete(id);
-            return new ResponseEntity(HttpStatus.OK);
+            return new ResponseEntity<>(HttpStatus.OK);
         } catch (Exception e) {
-            return new ResponseEntity(HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
 

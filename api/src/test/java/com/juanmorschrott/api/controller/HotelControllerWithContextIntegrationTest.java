@@ -71,7 +71,6 @@ public class HotelControllerWithContextIntegrationTest {
 
         // then
         assertThat(response.getStatus()).isEqualTo(HttpStatus.NOT_FOUND.value());
-        assertThat(response.getContentAsString()).isEqualTo("Hotel not found");
     }
 
 }
