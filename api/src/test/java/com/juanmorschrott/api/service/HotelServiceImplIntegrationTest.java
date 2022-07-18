@@ -2,14 +2,12 @@ package com.juanmorschrott.api.service;
 
 import com.juanmorschrott.api.model.Hotel;
 import com.juanmorschrott.api.repository.HotelRepository;
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.TestConfiguration;
-import org.springframework.boot.test.mock.mockito.MockBean;
-import org.springframework.context.annotation.Bean;
-import org.springframework.test.context.junit4.SpringRunner;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.math.BigDecimal;
 import java.util.Arrays;
@@ -18,18 +16,18 @@ import java.util.List;
 import static org.assertj.core.api.AssertionsForInterfaceTypes.assertThat;
 import static org.mockito.Mockito.when;
 
-@RunWith(SpringRunner.class)
+@ExtendWith(MockitoExtension.class)
 public class HotelServiceImplIntegrationTest {
 
-    @Autowired
-    private HotelService hotelService;
+    @InjectMocks
+    private HotelServiceImpl hotelService;
 
-    @MockBean
+    @Mock
     private HotelRepository hotelRepository;
 
     private Hotel hotel = null;
 
-    @Before
+    @BeforeEach
     public void setUp() {
         hotel = new Hotel(1, "Test Name", "Test Description", BigDecimal.valueOf(99.9));
     }
@@ -38,14 +36,6 @@ public class HotelServiceImplIntegrationTest {
         return Arrays.asList(new Hotel(1, "Foo", "Test Description", BigDecimal.valueOf(99.9)),
                 new Hotel(2, "Foo2", "Test Description", BigDecimal.valueOf(99.9)),
                 new Hotel(3, "Foo3", "Test Description", BigDecimal.valueOf(99.9)));
-    }
-
-    @TestConfiguration
-    static class HotelServiceImplTestContextConfiguration {
-        @Bean
-        public HotelService hotelService() {
-            return new HotelServiceImpl();
-        }
     }
 
     @Test
