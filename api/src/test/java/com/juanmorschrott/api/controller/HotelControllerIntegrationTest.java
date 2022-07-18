@@ -1,7 +1,7 @@
 package com.juanmorschrott.api.controller;
 
 import com.juanmorschrott.api.model.Hotel;
-import com.juanmorschrott.api.service.HotelServiceImpl;
+import com.juanmorschrott.api.service.HotelService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -25,7 +25,7 @@ import static org.mockito.BDDMockito.given;
 public class HotelControllerIntegrationTest {
 
     @MockBean
-    private HotelServiceImpl hotelService;
+    private HotelService hotelService;
 
     @Autowired
     private TestRestTemplate restTemplate;

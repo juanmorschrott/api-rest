@@ -20,7 +20,7 @@ import static org.mockito.Mockito.when;
 public class HotelServiceImplIntegrationTest {
 
     @InjectMocks
-    private HotelServiceImpl hotelService;
+    private HotelService hotelService;
 
     @Mock
     private HotelRepository hotelRepository;

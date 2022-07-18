@@ -1,7 +1,7 @@
 package com.juanmorschrott.api.controller;
 
 import com.juanmorschrott.api.model.Hotel;
-import com.juanmorschrott.api.service.HotelServiceImpl;
+import com.juanmorschrott.api.service.HotelService;
 import org.hamcrest.Matchers;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -30,7 +30,7 @@ public class HotelControllerWithContextIntegrationTest {
     private MockMvc mockMvc;
 
     @MockBean
-    private HotelServiceImpl hotelService;
+    private HotelService hotelService;
 
     @Test
     public void whenFindByName_thenReturnHotel() throws Exception {
@@ -49,8 +49,7 @@ public class HotelControllerWithContextIntegrationTest {
         mockMvc.perform(get("/api/v1/hotels/1"))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.id", Matchers.is(1)))
-                .andExpect(jsonPath("$.name", Matchers.is("Foo")))
-                ;
+                .andExpect(jsonPath("$.name", Matchers.is("Foo")));
     }
 
     @Test

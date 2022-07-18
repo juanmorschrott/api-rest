@@ -1,21 +1,45 @@
 package com.juanmorschrott.api.service;
 
-import com.juanmorschrott.api.model.Hotel;
-
 import java.util.List;
+import java.util.Optional;
 
-public interface HotelService {
+import com.juanmorschrott.api.model.Hotel;
+import com.juanmorschrott.api.repository.HotelRepository;
 
-    List<Hotel> list();
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
-    Hotel create(Hotel hotel);
+@Service
+public class HotelService {
 
-    Hotel get(Long id);
+    @Autowired
+    private HotelRepository repository;
 
-    Hotel getByName(String name);
+    public HotelService() {}
 
-    Hotel update(Hotel hotel);
+    public List<Hotel> list() {
+        return (List<Hotel>) repository.findAll();
+    }
 
-    void delete(Long id);
+    public Hotel create(Hotel hotel) {
+        return repository.save(hotel);
+    }
+
+    public Hotel get(Long id) {
+        return repository.findById(id).orElse(null);
+    }
+
+    public Hotel getByName(String name) {
+        return repository.findByName(name).orElse(null);
+    }
+
+    public Hotel update(Hotel hotel) {
+        return repository.save(hotel);
+    }
+
+    public void delete(Long id) {
+        Optional<Hotel> hotel = repository.findById(id);
+        hotel.ifPresent(value -> repository.delete(value));
+    }
 
 }
