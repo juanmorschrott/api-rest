@@ -1,8 +1,6 @@
 package com.juanmorschrott.api.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.ToString;
+import lombok.*;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -11,10 +9,13 @@ import javax.persistence.Id;
 import java.math.BigDecimal;
 
 @AllArgsConstructor
+@Builder
 @Data
 @Entity
+@NoArgsConstructor
 @ToString
 public class Hotel {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
@@ -22,5 +23,5 @@ public class Hotel {
     private String description;
     private BigDecimal price;
 
-    public Hotel() {}
 }
+
