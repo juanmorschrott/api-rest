@@ -1,6 +1,6 @@
 export class Hotel {
-  id: number;
-  name: string;
-  description: string;
-  price: number;
+  id: number = 0;
+  name: string = "";
+  description: string = "";
+  price: number = 0.00;
 }

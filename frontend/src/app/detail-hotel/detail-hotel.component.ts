@@ -10,14 +10,14 @@ import { HotelService } from '../service/hotel.service';
 })
 export class DetailHotelComponent implements OnInit {
 
-  id: string;
+  id: string = "";
   hotel: any;
 
   constructor(private route: ActivatedRoute, private router: Router, private hotelService: HotelService) { }
 
   ngOnInit() {
     this.hotel = new Hotel();
-    const hotelId = +localStorage.getItem('hotelDetailId');
+    const hotelId = +localStorage.getItem('hotelDetailId')!;
     if (!hotelId) {
       alert('Invalid action.');
       this.router.navigate(['list-hotel']);

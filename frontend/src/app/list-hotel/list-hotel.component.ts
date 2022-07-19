@@ -10,10 +10,9 @@ import {HotelService} from '../service/hotel.service';
 })
 export class ListHotelComponent implements OnInit {
 
-  hotels: Hotel[];
+  hotels: Hotel[] = [];
 
-  constructor(private router: Router, private hotelService: HotelService) {
-  }
+  constructor(private router: Router, private hotelService: HotelService) {}
 
   ngOnInit() {
     this.hotelService.getHotels()

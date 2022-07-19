@@ -12,13 +12,19 @@ import { first } from 'rxjs/operators';
 })
 export class EditHotelComponent implements OnInit {
 
-  hotel: Hotel;
+  hotel?: Hotel;
   editForm: FormGroup;
 
-  constructor(private formBuilder: FormBuilder, private router: Router, private hotelService: HotelService) { }
+  constructor(private formBuilder: FormBuilder, private router: Router, private hotelService: HotelService) {
+    this.editForm = formBuilder.group({
+      name: formBuilder.control('', Validators.required),
+      description: formBuilder.control('', Validators.required),
+      price: formBuilder.control('', Validators.required)
+    });
+  }
 
   ngOnInit() {
-    const hotelId = +localStorage.getItem('editHotelId');
+    let hotelId = +localStorage!.getItem('editHotelId')!;
     if (!hotelId) {
       alert('Invalid action.');
       this.router.navigate(['list-hotel']);
