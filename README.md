@@ -4,10 +4,11 @@ Simple API Rest y Single Page Application.
 
 ## Dependencias
 
- - Java openjdk version "1.8.0_222"
+ - Java openjdk version "17"
  - Lombok plugin installed in your IDE
- - Node v10.16.3
+ - Node v16.16.3
     - @angular/cli
+ - Docker & docker-compose
 
 ## Componentes
 
@@ -17,9 +18,9 @@ Aplicación WEB CRUD Spring-boot con base de datos H2.
 
 Ejecutar: 
 
-```
-./mvnw clean install
-./mvnw spring-boot:run
+```bash
+$ cd ./api-rest
+$ docker-compose up
 ```
 
 BASE-URL:   http://localhost:8080/api/v1/hotels
@@ -46,5 +47,5 @@ npm install
 ng serve
 ```
 
-URL:   http://localhost:4200
+URL:   http://localhost
 
