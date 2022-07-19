@@ -1,8 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
+import { AppRoutingModule } from './app.routing';
 import { AppComponent } from './app.component';
-import { routing } from './app.routing';
 import { AddHotelComponent } from './add-hotel/add-hotel.component';
 import { EditHotelComponent } from './edit-hotel/edit-hotel.component';
 import { ListHotelComponent } from './list-hotel/list-hotel.component';
@@ -21,7 +21,7 @@ import { DetailHotelComponent } from './detail-hotel/detail-hotel.component';
   ],
   imports: [
     BrowserModule,
-    routing,
+    AppRoutingModule,
     ReactiveFormsModule,
     HttpClientModule
   ],

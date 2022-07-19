@@ -10,9 +10,13 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class AddHotelComponent implements OnInit {
 
-  constructor(private formBuilder: FormBuilder, private router: Router, private hotelService: HotelService) { }
-
   addForm: FormGroup;
+
+  constructor(private formBuilder: FormBuilder, private router: Router, private hotelService: HotelService) {
+    this.addForm = formBuilder.group({
+      title: formBuilder.control('', Validators.required)
+    });
+  }
 
   ngOnInit() {
     this.addForm = this.formBuilder.group({
