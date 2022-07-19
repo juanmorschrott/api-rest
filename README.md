@@ -23,6 +23,10 @@ $ cd ./api-rest
 $ docker-compose up
 ```
 
+Probar aplicación:
+
+URL:   http://localhost
+
 BASE-URL:   http://localhost:8080/api/v1/hotels
 
 |OPERATION|METHOD|URI|
@@ -35,17 +39,3 @@ BASE-URL:   http://localhost:8080/api/v1/hotels
 API Documentation:
 
 [http://localhost:8080/swagger-ui.html](http://localhost:8080/swagger-ui.html)
-
-### Frontend
-
-Aplicación Angular CRUD
-
-Ejecutar: 
-
-```
-npm install
-ng serve
-```
-
-URL:   http://localhost
-
