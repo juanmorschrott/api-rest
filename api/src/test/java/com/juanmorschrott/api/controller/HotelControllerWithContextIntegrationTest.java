@@ -8,6 +8,7 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.http.MediaType;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.web.servlet.MockMvc;
 
@@ -46,7 +47,7 @@ public class HotelControllerWithContextIntegrationTest {
         when(hotelService.get(1L)).thenReturn(hotel);
 
         // then
-        mockMvc.perform(get("/api/v1/hotels/1"))
+        mockMvc.perform(get("/api/v1/hotels/1").contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.id", Matchers.is(1)))
                 .andExpect(jsonPath("$.name", Matchers.is("Foo")));
@@ -58,7 +59,7 @@ public class HotelControllerWithContextIntegrationTest {
         when(hotelService.get(anyLong())).thenReturn(null);
 
         // then
-        mockMvc.perform(get("/api/v1/hotels/404"))
+        mockMvc.perform(get("/api/v1/hotels/404").contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isNotFound());
     }
 
