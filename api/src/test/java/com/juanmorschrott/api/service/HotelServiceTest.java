@@ -17,7 +17,7 @@ import static org.assertj.core.api.AssertionsForInterfaceTypes.assertThat;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
-public class HotelServiceImplIntegrationTest {
+public class HotelServiceTest {
 
     @InjectMocks
     private HotelService hotelService;
@@ -30,12 +30,6 @@ public class HotelServiceImplIntegrationTest {
     @BeforeEach
     public void setUp() {
         hotel = new Hotel(1, "Test Name", "Test Description", BigDecimal.valueOf(99.9));
-    }
-
-    private List<Hotel> getHotelsArray() {
-        return Arrays.asList(new Hotel(1, "Foo", "Test Description", BigDecimal.valueOf(99.9)),
-                new Hotel(2, "Foo2", "Test Description", BigDecimal.valueOf(99.9)),
-                new Hotel(3, "Foo3", "Test Description", BigDecimal.valueOf(99.9)));
     }
 
     @Test
@@ -82,6 +76,12 @@ public class HotelServiceImplIntegrationTest {
 
         // then
         assertThat(hotel).isNull();
+    }
+
+    private List<Hotel> getHotelsArray() {
+        return Arrays.asList(new Hotel(1, "Foo", "Test Description", BigDecimal.valueOf(99.9)),
+                new Hotel(2, "Foo2", "Test Description", BigDecimal.valueOf(99.9)),
+                new Hotel(3, "Foo3", "Test Description", BigDecimal.valueOf(99.9)));
     }
 
 }

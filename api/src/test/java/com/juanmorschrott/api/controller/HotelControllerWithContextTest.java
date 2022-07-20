@@ -2,6 +2,7 @@ package com.juanmorschrott.api.controller;
 
 import com.juanmorschrott.api.model.Hotel;
 import com.juanmorschrott.api.service.HotelService;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -21,8 +22,10 @@ import static org.mockito.BDDMockito.given;
 /**
  * Integration test using TestRestTemplate
  */
+
+@Disabled("This integration test will be replaced with test containers")
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-public class HotelControllerIntegrationTest {
+public class HotelControllerWithContextTest {
 
     @MockBean
     private HotelService hotelService;

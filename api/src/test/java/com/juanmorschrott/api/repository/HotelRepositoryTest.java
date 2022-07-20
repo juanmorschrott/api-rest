@@ -1,6 +1,7 @@
 package com.juanmorschrott.api.repository;
 
 import com.juanmorschrott.api.model.Hotel;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
@@ -11,8 +12,9 @@ import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+@Disabled("This integration test will be replaced with test containers")
 @DataJpaTest
-public class HotelRepositoryIntegrationTest {
+public class HotelRepositoryTest {
 
     @Autowired
     private TestEntityManager entityManager;
