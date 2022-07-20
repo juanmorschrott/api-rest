@@ -1,8 +1,8 @@
 # Api-rest
 
-Simple API Rest y Single Page Application.
+Simple API Rest and Single Page Application.
 
-## Dependencias
+## Dependencies
 
  - Java openjdk version "17"
  - Lombok plugin installed in your IDE
@@ -10,20 +10,20 @@ Simple API Rest y Single Page Application.
     - @angular/cli
  - Docker & docker-compose
 
-## Componentes
+## Components
 
 ### Backend
 
-Aplicación WEB CRUD Spring-boot con base de datos H2.
+Spring-boot WEB CRUD Application.
 
-Ejecutar: 
+Execute the above commands to run the application: 
 
 ```bash
 $ cd ./api-rest
 $ docker-compose up
 ```
 
-Probar aplicación:
+Once started browse the app following this link:
 
 URL:   http://localhost
 
