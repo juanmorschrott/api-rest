@@ -1,24 +1,39 @@
 version: "3.9"
+
 services:
-    frontend:
-        image: frontend
-        container_name: frontend
-        build:
-            context: ./frontend
-        networks: 
-            - frontend
-            - backend
-        ports:
-            - "80:80"
-    backend:
-        image: api
-        container_name: api
-        build:
-            context: ./api
-        networks: 
-            - backend
-        ports:
-            - "8080:8080"
-networks: 
   frontend:
-  backend:
+    image: frontend
+    build:
+      context: ./frontend
+    depends_on:
+      - api
+    networks:
+      - private
+    ports:
+      - 80:80
+  api:
+    image: api
+    build:
+      context: ./api
+    depends_on:
+      - db
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://db:3306/api?autoReconnect=true&useSSL=false
+    networks:
+      - private
+    ports:
+      - 8080:8080
+  db:
+    image: mysql:5.7
+    environment:
+      MYSQL_DATABASE: "api"
+      MYSQL_USER: "api"
+      MYSQL_PASSWORD: "api"
+      MYSQL_ROOT_PASSWORD: "root"
+    networks:
+      - private
+    ports:
+      - 3306:3306
+
+networks:
+  private:
