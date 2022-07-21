@@ -1,6 +1,6 @@
 # Api-rest
 
-Simple API Rest and Single Page Application.
+Simple API Rest and Single Page Application for training purposes.
 
 ## Dependencies
 
@@ -10,11 +10,7 @@ Simple API Rest and Single Page Application.
     - @angular/cli
  - Docker & docker-compose
 
-## Components
-
-### Backend
-
-Spring-boot WEB CRUD Application.
+## Run the project
 
 Execute the above commands to run the application: 
 
@@ -26,6 +22,16 @@ $ docker-compose up
 Once started browse the app following this link:
 
 URL:   http://localhost
+
+## Components
+
+### Frontend
+
+Angular Application with a very simple interface to make CRUD requests.
+
+### Backend
+
+Spring-boot WEB CRUD Application.
 
 BASE-URL:   http://localhost:8080/api/v1/hotels
 
