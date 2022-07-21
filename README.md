@@ -22,6 +22,13 @@ Once started browse the app following this link:
 
 URL:   http://localhost
 
+Or execute e2e tests running:
+
+```bash
+$ cd ./frontend
+$ npx cypress run
+```
+
 ## Components
 
 ### Frontend
