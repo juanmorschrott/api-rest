@@ -11,7 +11,7 @@ Simple API Rest and Single Page Application for training purposes.
 
 ## Run the project
 
-Execute the above commands to run the application: 
+Execute this commands to run the application: 
 
 ```bash
 $ cd ./api-rest
@@ -22,7 +22,7 @@ Once started browse the app following this link:
 
 URL:   http://localhost
 
-Or execute e2e tests running:
+Or execute e2e tests by running:
 
 ```bash
 $ cd ./frontend
