@@ -14,10 +14,10 @@ import java.util.List;
 public class HotelFixtures {
 
     public static HotelDto hotelDto = HotelDto.builder()
-            .id(1)
+            .id(1L)
             .name("Foo")
             .description("Test Description")
-            .price(BigDecimal.valueOf(99.9))
+            .price(99.9)
             .build();
 
     public static Hotel hotel = Hotel.builder()

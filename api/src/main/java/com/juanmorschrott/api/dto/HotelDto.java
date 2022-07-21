@@ -2,8 +2,6 @@ package com.juanmorschrott.api.dto;
 
 import lombok.*;
 
-import java.math.BigDecimal;
-
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
@@ -17,6 +15,6 @@ public class HotelDto {
 
     private String description;
 
-    private BigDecimal price;
+    private double price;
 
 }
