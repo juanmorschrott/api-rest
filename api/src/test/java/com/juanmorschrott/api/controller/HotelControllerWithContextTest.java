@@ -1,5 +1,7 @@
 package com.juanmorschrott.api.controller;
 
+import com.juanmorschrott.api.dto.HotelDto;
+import com.juanmorschrott.api.fixtures.HotelFixtures;
 import com.juanmorschrott.api.model.Hotel;
 import com.juanmorschrott.api.service.HotelService;
 import org.junit.jupiter.api.Disabled;
@@ -34,39 +36,38 @@ public class HotelControllerWithContextTest {
     private TestRestTemplate restTemplate;
 
     @Test
-    public void whenList_thenReturnHotels() throws Exception {
+    public void whenList_thenReturnHotels() {
         // given
-        given(hotelService.list()).willReturn(getHotelsArray());
+        given(hotelService.list()).willReturn(HotelFixtures.getHotelsArray());
 
         // when
         ResponseEntity<List<Hotel>> response = restTemplate.exchange(
                 "/api/v1/hotels",
                 HttpMethod.GET,
                 null,
-                new ParameterizedTypeReference<List<Hotel>>(){});
+                new ParameterizedTypeReference<>() {
+                });
 
         // then
         assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
-        assertThat(response.getBody().size() == 3);
-    }
-
-    private List<Hotel> getHotelsArray() {
-        return Arrays.asList(new Hotel(1, "Foo", "Test Description", BigDecimal.valueOf(99.9)),
-                new Hotel(2, "Foo2", "Test Description", BigDecimal.valueOf(99.9)),
-                new Hotel(3, "Foo3", "Test Description", BigDecimal.valueOf(99.9)));
+        assertThat(response.getBody().size()).isEqualTo(3);
     }
 
     @Test
-    public void whenReceiveHotel_thenCreateHotel() throws Exception {
+    public void whenReceiveHotel_thenCreateHotel() {
         // given
-        Hotel hotel = new Hotel(1, "Foo", "Test Description", BigDecimal.valueOf(99.9));
-        given(hotelService.create(hotel)).willReturn(hotel);
+        HotelDto hotelDto = HotelFixtures.hotelDto;
+        Hotel hotel = HotelFixtures.hotel;
+
+        given(hotelService.create(hotelDto)).willReturn(hotel);
 
         // when
         HttpHeaders requestHeaders = new HttpHeaders();
         requestHeaders.setContentType(MediaType.APPLICATION_JSON);
         requestHeaders.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));
+
         HttpEntity<Hotel> requestEntity = new HttpEntity<>(hotel, requestHeaders);
+
         ResponseEntity<Hotel> response = restTemplate.exchange(
                 "/api/v1/hotels",
                 HttpMethod.POST,
@@ -79,17 +80,19 @@ public class HotelControllerWithContextTest {
     }
 
     @Test
-    public void whenUpdate_thenReturnUpdatedHotel() throws Exception {
+    public void whenUpdate_thenUpdatedHotel() {
         // given
-        Hotel hotel = new Hotel(1, "Foo", "Test Description", BigDecimal.valueOf(99.9));
+        HotelDto hotelDto = HotelFixtures.hotelDto;
         Hotel updatedHotel = new Hotel(1, "Updated Foo", "Test Description", BigDecimal.valueOf(99.9));
-        given(hotelService.update(hotel)).willReturn(updatedHotel);
+        given(hotelService.update(hotelDto)).willReturn(updatedHotel);
 
         // when
         HttpHeaders requestHeaders = new HttpHeaders();
         requestHeaders.setContentType(MediaType.APPLICATION_JSON);
-        requestHeaders.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));
-        HttpEntity<Hotel> requestEntity = new HttpEntity<>(hotel, requestHeaders);
+        requestHeaders.setAccept(List.of(MediaType.APPLICATION_JSON));
+
+        HttpEntity<HotelDto> requestEntity = new HttpEntity<>(hotelDto, requestHeaders);
+
         ResponseEntity<Hotel> response = restTemplate.exchange(
                 "/api/v1/hotels",
                 HttpMethod.PUT,
@@ -98,7 +101,7 @@ public class HotelControllerWithContextTest {
 
         // then
         assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
-        assertThat(response.getBody().getName().equals(updatedHotel.getName()));
+        assertThat(response.getBody().getName()).isEqualTo(updatedHotel.getName());
     }
 
 }

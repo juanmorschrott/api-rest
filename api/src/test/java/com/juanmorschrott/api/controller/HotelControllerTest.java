@@ -1,5 +1,7 @@
 package com.juanmorschrott.api.controller;
 
+import com.juanmorschrott.api.exception.HotelNotFoundException;
+import com.juanmorschrott.api.fixtures.HotelFixtures;
 import com.juanmorschrott.api.model.Hotel;
 import com.juanmorschrott.api.service.HotelService;
 import org.hamcrest.Matchers;
@@ -12,9 +14,6 @@ import org.springframework.http.MediaType;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.web.servlet.MockMvc;
 
-import java.math.BigDecimal;
-
-import static org.mockito.ArgumentMatchers.anyLong;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
@@ -34,14 +33,9 @@ public class HotelControllerTest {
     private HotelService hotelService;
 
     @Test
-    public void whenFindByName_thenReturnHotel() throws Exception {
+    public void whenFindId_thenReturnHotel() throws Exception {
         // given
-        Hotel hotel = Hotel.builder()
-                .id(1)
-                .name("Foo")
-                .description("Test Description")
-                .price(BigDecimal.valueOf(99.9))
-                .build();
+        Hotel hotel = HotelFixtures.hotel;
 
         // when
         when(hotelService.get(1L)).thenReturn(hotel);
@@ -54,9 +48,10 @@ public class HotelControllerTest {
     }
 
     @Test
-    public void whenFindByName_thenReturnEmptyStringIfNotExists() throws Exception {
+    public void whenHotelNotFound_thenReturn404() throws Exception {
         // when
-        when(hotelService.get(anyLong())).thenReturn(null);
+        Long hotelId = 404L;
+        when(hotelService.get(hotelId)).thenThrow(HotelNotFoundException.class);
 
         // then
         mockMvc.perform(get("/api/v1/hotels/404").contentType(MediaType.APPLICATION_JSON))

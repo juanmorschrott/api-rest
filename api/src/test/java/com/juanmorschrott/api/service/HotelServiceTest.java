@@ -1,19 +1,22 @@
 package com.juanmorschrott.api.service;
 
+import com.juanmorschrott.api.exception.HotelNotFoundException;
+import com.juanmorschrott.api.fixtures.HotelFixtures;
 import com.juanmorschrott.api.model.Hotel;
 import com.juanmorschrott.api.repository.HotelRepository;
-import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import java.math.BigDecimal;
-import java.util.Arrays;
 import java.util.List;
 
+import static java.util.Optional.of;
 import static org.assertj.core.api.AssertionsForInterfaceTypes.assertThat;
+import static org.mockito.ArgumentMatchers.anyLong;
+import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
@@ -25,28 +28,23 @@ public class HotelServiceTest {
     @Mock
     private HotelRepository hotelRepository;
 
-    private Hotel hotel = null;
-
-    @BeforeEach
-    public void setUp() {
-        hotel = new Hotel(1, "Test Name", "Test Description", BigDecimal.valueOf(99.9));
-    }
-
     @Test
-    public void whenList_thenHotelShouldReturnAllValues() {
+    public void whenList_thenShouldReturnAllValues() {
         // when
-        when(hotelRepository.findAll()).thenReturn(getHotelsArray());
+        when(hotelRepository.findAll()).thenReturn(HotelFixtures.getHotelsArray());
         List<Hotel> hotels = hotelService.list();
 
         // then
-        assertThat(hotels.get(0).getName()).isEqualTo(getHotelsArray().get(0).getName());
+        assertThat(hotels.get(0).getName()).isEqualTo(HotelFixtures.getHotelsArray().get(0).getName());
         assertThat(hotels.size()).isEqualTo(3);
     }
 
     @Test
-    public void whenValidId_thenHotelShouldBeFound() {
+    public void whenFindWithValidId_thenHotelShouldBeFound() {
         // when
-        when(hotelRepository.findById(hotel.getId())).thenReturn(java.util.Optional.of(hotel));
+        Hotel hotel = HotelFixtures.hotel;
+
+        when(hotelRepository.findById(anyLong())).thenReturn(of(hotel));
         Hotel found = hotelService.get(1L);
 
         // then
@@ -54,12 +52,13 @@ public class HotelServiceTest {
     }
 
     @Test
-    public void whenValidName_thenHotelShouldBeFound() {
+    public void whenFindWithValidName_thenHotelShouldBeFound() {
         // given
-        String name = "Test Name";
+        Hotel hotel = HotelFixtures.hotel;
+        String name = "Foo";
 
         // when
-        when(hotelRepository.findByName(hotel.getName())).thenReturn(java.util.Optional.of(hotel));
+        when(hotelRepository.findByName(anyString())).thenReturn(of(hotel));
         Hotel found = hotelService.getByName(name);
 
         // then
@@ -67,21 +66,14 @@ public class HotelServiceTest {
     }
 
     @Test
-    public void whenNotValidName_thenHotelShouldNotBeFound() {
+    public void whenNotValidName_thenHotelShouldThrowNotFoundException() {
         // given
         String name = "Foo";
 
         // when
-        Hotel hotel = hotelService.getByName(name);
-
-        // then
-        assertThat(hotel).isNull();
-    }
-
-    private List<Hotel> getHotelsArray() {
-        return Arrays.asList(new Hotel(1, "Foo", "Test Description", BigDecimal.valueOf(99.9)),
-                new Hotel(2, "Foo2", "Test Description", BigDecimal.valueOf(99.9)),
-                new Hotel(3, "Foo3", "Test Description", BigDecimal.valueOf(99.9)));
+        HotelNotFoundException thrown = Assertions.assertThrows(HotelNotFoundException.class, () -> {
+            Hotel hotel = hotelService.getByName(name);
+        });
     }
 
 }
