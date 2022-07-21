@@ -5,7 +5,6 @@ Simple API Rest and Single Page Application for training purposes.
 ## Dependencies
 
  - Java openjdk version "17"
- - Lombok plugin installed in your IDE
  - Node v16.16.3
     - @angular/cli
  - Docker & docker-compose
