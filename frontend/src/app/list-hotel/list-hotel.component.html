@@ -1,4 +1,4 @@
-<div class="col-md-12">
+<div id="list-hotel" class="col-md-12">
   <h2> Hotel Details</h2>
   <hr/>
   <button class="btn btn-danger" (click)="addHotel()"> Add Hotel</button>
@@ -17,14 +17,14 @@
     <tbody>
     <tr *ngFor="let hotel of hotels">
       <td class="hidden">{{hotel.id}}</td>
-      <td>{{hotel.name}}</td>
-      <td>{{hotel.description}}</td>
-      <td>{{hotel.price | number | currency:'EUR'}}</td>
-      <td>
-        <button class="btn btn-danger" (click)="deleteHotel(hotel)"> Delete</button>
-        <button class="btn btn-danger" (click)="editHotel(hotel)" style="margin-left: 20px;"> Edit</button>
-        <button class="btn btn-info" (click)="hotelDetails(hotel)" style="margin-left: 10px"> Details</button>
-      </td>
+        <td>{{hotel.name}}</td>
+        <td>{{hotel.description}}</td>
+        <td>{{hotel.price | number | currency:'EUR'}}</td>
+        <td>
+          <button class="btn btn-danger" (click)="deleteHotel(hotel)"> Delete</button>
+          <button class="btn btn-danger" (click)="editHotel(hotel)" style="margin-left: 20px;"> Edit</button>
+          <button class="btn btn-info" (click)="hotelDetails(hotel)" style="margin-left: 10px"> Details</button>
+        </td>
     </tr>
     </tbody>
   </table>
