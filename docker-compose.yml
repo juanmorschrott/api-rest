@@ -1,6 +1,7 @@
 version: "3.9"
 
 services:
+
   frontend:
     image: frontend
     build:
@@ -11,25 +12,22 @@ services:
       - private
     ports:
       - 80:80
+
   api:
     image: api
     build:
       context: ./api
     depends_on:
       - db
-    environment:
-      SPRING_DATASOURCE_URL: jdbc:mysql://db:3306/api?autoReconnect=true&useSSL=false
     networks:
       - private
     ports:
       - 8080:8080
+
   db:
-    image: mysql:5.7
-    environment:
-      MYSQL_DATABASE: "api"
-      MYSQL_USER: "api"
-      MYSQL_PASSWORD: "api"
-      MYSQL_ROOT_PASSWORD: "root"
+    image: db
+    build:
+      context: ./db
     networks:
       - private
     ports:
