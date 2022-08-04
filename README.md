@@ -8,6 +8,7 @@ Technologies included:
  - Spring Boot backend REST API
  - Prometheus and Grafana monitoring
  - Docker & docker-compose container technology
+ - Jmeter test plan
 
 ## Dependencies
 
