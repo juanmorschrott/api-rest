@@ -2,6 +2,13 @@
 
 Simple API Rest and Single Page Application for training purposes.
 
+Technologies included:
+ - Angular frontend application
+ - Cypress e2e functional test
+ - Spring Boot backend REST API
+ - Prometheus and Grafana monitoring
+ - Docker & docker-compose container technology
+
 ## Dependencies
 
  - Java openjdk version "17"
