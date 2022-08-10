@@ -14,7 +14,7 @@ Technologies included:
 
 ## Diagram
 
-![architecture](rest-api.png)
+![architecture](rest-api.jpg)
 
 ## Dependencies
 
