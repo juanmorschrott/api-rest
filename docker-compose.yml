@@ -9,9 +9,28 @@ services:
     depends_on:
       - api
     networks:
-      - private
+      - public
     ports:
       - 80:80
+
+  gateway:
+    image: gateway
+    build:
+      context: ./gateway
+    networks:
+      - public
+      - private
+    ports:
+      - 8080:8080
+
+  discovery-server:
+    image: discovery-server
+    build:
+      context: ./discovery-server
+    networks:
+      - private
+    ports:
+      - 8761:8761
 
   api:
     image: api
@@ -22,7 +41,7 @@ services:
     networks:
       - private
     ports:
-      - 8080:8080
+      - 8090:8090
 
   db:
     image: db
@@ -62,4 +81,5 @@ volumes:
   prometheus_data: {}
 
 networks:
+  public:
   private:

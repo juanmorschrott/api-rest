@@ -1,14 +1,20 @@
 # Api-rest
 
-Simple API Rest and Single Page Application for training purposes.
+Simple Spring Cloud Microservice for training purposes.
 
 Technologies included:
- - Angular frontend application
+ - Angular 14.* frontend application
  - Cypress e2e functional test
- - Spring Boot backend REST API
+ - Spring Cloud Gateway
+ - Spring Cloud Discovery Server
+ - Spring Boot 2.7.1 backend REST API
  - Prometheus and Grafana monitoring
  - Docker & docker-compose container technology
  - Jmeter test plan
+
+## Diagram
+
+![architecture](rest-api.png)
 
 ## Dependencies
 
