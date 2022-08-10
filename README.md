@@ -1,6 +1,6 @@
 # Api-rest
 
-Simple Spring Cloud Microservice for training purposes.
+Simple Spring Cloud based Microservice system for training purposes.
 
 Technologies included:
  - Angular 14.* frontend application
