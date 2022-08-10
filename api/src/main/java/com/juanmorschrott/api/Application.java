@@ -13,17 +13,16 @@ public class Application {
 		SpringApplication.run(Application.class, args);
 	}
 
-	@Bean
-	public WebMvcConfigurer corsConfigurer() {
-		return new WebMvcConfigurer() {
-			@Override
-			public void addCorsMappings(CorsRegistry registry) {
-				registry.addMapping("/api/v1/hotels/**")
-						.allowedOriginPatterns("http://localhost:80")
-						.allowedOriginPatterns("http://localhost:4200")
-						.allowedMethods("GET", "POST", "PUT", "DELETE");
-			}
-		};
-	}
+    @Bean
+    WebMvcConfigurer corsConfigurer() {
+        return new WebMvcConfigurer() {
+            @Override
+            public void addCorsMappings(CorsRegistry registry) {
+                registry.addMapping("/api/v1/hotels/**")
+                        .allowedOriginPatterns("*")
+                        .allowedMethods("*");
+            }
+        };
+    }
 
 }
