@@ -49,7 +49,19 @@ $ npx cypress run
 
 Angular Application with a very simple interface to make CRUD requests.
 
-### Backend
+### Gateway
+
+Spring Cloud Gateway as gatekeeper
+
+BASE-URL:   http://localhost:8080
+
+### Discovery-server
+
+Spring Cloud Discovery Server
+
+Dashboard: [http://localhost:8761](http://localhost:8761)
+
+### Api
 
 Spring-boot WEB CRUD Application.
 
