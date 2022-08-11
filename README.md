@@ -77,3 +77,23 @@ BASE-URL:   http://localhost:8090/api/v1/hotels
 API Documentation:
 
 [http://localhost:8090/swagger-ui.html](http://localhost:8090/swagger-ui.html)
+
+### Prometheus
+
+The Api project is configured to serve all the metrics at [http://localhost:8090/actuator/prometheus](http://localhost:8090/actuator/prometheus)
+
+Prometheus configuration is located at:
+
+```bash
+$ ./prometheus
+```
+
+### Grafana
+
+You can also use Grafana to visualize all the above commented prometheus metrics.
+
+Import the dashboard created at:
+
+```bash
+$ ./grafana
+```
