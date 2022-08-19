@@ -72,8 +72,10 @@ public class HotelServiceTest {
 
         // when
         HotelNotFoundException thrown = Assertions.assertThrows(HotelNotFoundException.class, () -> {
-            Hotel hotel = hotelService.getByName(name);
+            hotelService.getByName(name);
         });
+
+        assertThat(thrown).isNotNull();
     }
 
 }
