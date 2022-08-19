@@ -82,6 +82,8 @@ API Documentation:
 
 The Api project is configured to serve all the metrics at [http://localhost:8090/actuator/prometheus](http://localhost:8090/actuator/prometheus)
 
+Access to Prometheus Dashboard: [http://localhost:9090](http://localhost:9090)
+
 Prometheus configuration is located at:
 
 ```bash
@@ -91,6 +93,8 @@ $ ./prometheus
 ### Grafana
 
 You can also use Grafana to visualize all the above commented prometheus metrics.
+
+Access to Grafana Dashboard: [http://localhost:3000](http://localhost:3000)
 
 Import the dashboard created at:
 

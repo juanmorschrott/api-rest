@@ -1,7 +1,5 @@
 package com.juanmorschrott.api.exception;
 
-import java.util.function.Supplier;
-
 public class HotelNotFoundException extends RuntimeException {
 
     public HotelNotFoundException(Long id) {
