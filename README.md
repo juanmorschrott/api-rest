@@ -49,6 +49,8 @@ $ npx cypress run
 
 Angular Application with a very simple interface to make CRUD requests.
 
+Frontend: [http://localhost:80](http://localhost:80)
+
 ### Gateway
 
 Spring Cloud Gateway as gatekeeper
