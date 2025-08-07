@@ -3,7 +3,7 @@
 Simple Spring Cloud based Microservice system for training purposes.
 
 Technologies included:
- - Angular 14.* frontend application
+ - Angular 18 simple frontend application
  - Cypress e2e functional test
  - Spring Cloud Gateway
  - Spring Cloud Discovery Server
@@ -18,10 +18,9 @@ Technologies included:
 
 ## Dependencies
 
- - Java openjdk version >21
- - Maven >3.9.11
- - Node 16.16.3
-    - @angular/cli
+ - Java openjdk version >=21
+ - Maven >=3.9.11
+ - Node 18.20.8
  - Docker & docker-compose
 
 ## Run the project
