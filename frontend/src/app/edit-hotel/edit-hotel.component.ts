@@ -54,4 +54,8 @@ export class EditHotelComponent implements OnInit {
         });
   }
 
+  cancel() {
+    this.router.navigate(['list-hotel']);
+  }
+
 }
