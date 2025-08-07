@@ -35,7 +35,8 @@ services:
     build:
       context: ./api
     depends_on:
-      - db
+      db:
+        condition: service_healthy
     networks:
       - private
       - monitoring
@@ -50,34 +51,31 @@ services:
       - private
     ports:
       - 3306:3306
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
 
   prometheus:
-    image: prom/prometheus:latest
+    build:
+      context: ./prometheus
     container_name: prometheus
     restart: unless-stopped
-    volumes:
-      - ./prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
-      - prometheus_data:/prometheus
-    command:
-      - '--config.file=/etc/prometheus/prometheus.yml'
-      - '--storage.tsdb.path=/prometheus'
-      - '--web.console.libraries=/etc/prometheus/console_libraries'
-      - '--web.console.templates=/etc/prometheus/consoles'
-      - '--web.enable-lifecycle'
     ports:
       - "9090:9090"
     networks:
       - monitoring
+    volumes:
+      - ./prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
 
   grafana:
-    image: grafana/grafana
+    build:
+      context: ./grafana
     ports:
       - "3000:3000"
     networks:
       - monitoring
-
-volumes:
-  prometheus_data: {}
 
 networks:
   public:
