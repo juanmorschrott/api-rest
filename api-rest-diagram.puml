@@ -1,0 +1,50 @@
+@startuml "api-rest-architecture"
+
+!define RECTANGLE_COLOR #ffffffff
+!define DATABASE_COLOR #CCE5FF
+!define ARROW_COLOR #5B9BD5
+
+skinparam componentStyle uml2
+skinparam rectangle {
+  BackgroundColor RECTANGLE_COLOR
+  BorderColor black
+  FontSize 14
+}
+skinparam database {
+  BackgroundColor DATABASE_COLOR
+  BorderColor black
+}
+skinparam arrow {
+  Color ARROW_COLOR
+  FontColor black
+  FontSize 12
+}
+
+rectangle "Public Network" {
+  [Client] as client RECTANGLE_COLOR;line:black
+  
+  rectangle "Frontend\nAngular\nPort: 80" as frontend
+}
+
+rectangle "Private Network" {
+  rectangle "Gateway\nSpring Cloud Gateway\nPort: 8080" as gateway
+  rectangle "API Service\nSpring Boot\nPort: 8090" as api
+  rectangle "Discovery Server\nEureka\nPort: 8761" as discovery
+  database "Database\nMySQL\nPort: 3306" as db
+}
+
+rectangle "Monitoring Network" {
+  rectangle "Prometheus\nMetrics Collector\nPort: 9090" as prometheus
+  rectangle "Grafana\nDashboard\nPort: 3000" as grafana
+}
+
+client --> frontend
+frontend --> gateway
+gateway --> api
+api --> db
+gateway --> discovery
+api --> discovery
+api --> prometheus
+prometheus --> grafana
+
+@enduml
