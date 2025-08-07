@@ -7,7 +7,7 @@ Technologies included:
  - Cypress e2e functional test
  - Spring Cloud Gateway
  - Spring Cloud Discovery Server
- - Spring Boot 2.7.1 backend REST API
+ - Spring Boot 3.5.4 backend REST API
  - Prometheus and Grafana monitoring
  - Docker & docker-compose container technology
  - Jmeter test plan
@@ -18,8 +18,9 @@ Technologies included:
 
 ## Dependencies
 
- - Java openjdk version "17"
- - Node v16.16.3
+ - Java openjdk version >21
+ - Maven >3.9.11
+ - Node 16.16.3
     - @angular/cli
  - Docker & docker-compose
 
