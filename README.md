@@ -14,7 +14,7 @@ Technologies included:
 
 ## Diagram
 
-![architecture](api-rest-architecture.png)
+![architecture](documentation/api-rest-architecture.png)
 
 ## Dependencies
 
@@ -42,6 +42,15 @@ Or execute e2e tests by running:
 $ cd ./frontend
 $ npx cypress run
 ```
+
+If you want to execute Cypress GUI run:
+
+```bash
+$ cd ./frontend
+$ npx cypress open --e2e
+```
+
+![cypress](documentation/cypress.png)
 
 ## Components
 
@@ -94,12 +103,13 @@ $ ./prometheus
 
 ### Grafana
 
-You can also use Grafana to visualize all the above commented prometheus metrics.
+You can also use Grafana to visualize all the above commented prometheus metrics. A free dashboard is included in /grafana. You can download it [here](https://grafana.com/grafana/dashboards/19004-spring-boot-statistics/)
 
-Access to Grafana Dashboard: [http://localhost:3000](http://localhost:3000)
+Access to Grafana Dashboard: [http://localhost:3000](http://localhost:3000):
 
-Import the dashboard created at:
+1. Browse to home > connections > add new connection. Search prometheus and set http://prometheus:9090 as source URL.
+2. go to dashboards > import > select 19004_rev1.json
 
-```bash
-$ ./grafana
-```
+And that's it:
+
+![grafana](documentation/grafana.png)
