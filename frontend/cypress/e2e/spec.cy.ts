@@ -1,49 +1,36 @@
-describe('My First Test', () => {
-  
-  it('Visits Hotels App', () => {
-    cy.visit('http://localhost')
+describe('Hotels E2E', () => {
 
-    cy.contains('Hotel Details')
-  })
+  it('create, update, view and delete a hotel', () => {
+    cy.visit('/')
 
-  it('Opens the add Hotel form', () => {
-    cy.contains('Add Hotel').click()
-
-    cy.url().should('include', '/add-hotel')
-  })
-
-  it('Creates one Hotel', () => {
-    cy.get('input[name=name]').type("test")
-    cy.get('input[name=description]').type("test description")
-    cy.get('input[name=price]').type("55.99")
-
-    cy.contains('Update').click()
+    // Create
+    cy.contains('button', 'Add Hotel').click()
+    cy.get('input[name=name]').type('test')
+    cy.get('input[name=description]').type('test description')
+    cy.get('input[name=price]').type('55.99')
+    cy.contains('button', 'Update').click()
     cy.contains('test')
-  })
 
-  it('Updates new test Hotel', () => {
-    cy.get('tbody>tr>td').last()
-      .contains('Edit').click()
-    cy.get('input[name=price]').clear().type("100.00")
-    cy.contains('Update').click()
+    // Update
+    cy.contains('tbody tr', 'test').within(() => {
+      cy.contains('Edit').click()
+    })
+    cy.get('input[name=price]').clear().type('100.00')
+    cy.contains('button', 'Update').click()
+    cy.contains('tbody tr', 'test').should('contain', '€100.00')
 
-    cy.get('tbody>tr>td').contains("€100.00")
-  })
-
-  it('Show new test Hotel detail', () => {
-    cy.get('tbody>tr>td').last()
-      .contains('Detail').click()
-    
-    // Contains expected details
+    // Detail
+    cy.contains('tbody tr', 'test').within(() => {
+      cy.contains('Detail').click()
+    })
     cy.contains('Name')
     cy.contains('Description')
     cy.contains('Mean Room Price')
-
     cy.contains('Back to Hotels List').click()
-  })
 
-  it('Delete dew test Hotel', () => {
-    cy.get('tbody>tr>td').last()
-      .contains('Delete').click()
+    // Delete
+    cy.contains('tbody tr', 'test').within(() => {
+      cy.contains('Delete').click()
+    })
   })
 })
