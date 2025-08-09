@@ -28,7 +28,8 @@ rectangle "Public Network" {
 
 rectangle "Private Network" {
   rectangle "Gateway\nSpring Cloud Gateway\nPort: 8080" as gateway
-  rectangle "API Service\nSpring Boot\nPort: 8090" as api
+  rectangle "API Service\nSpring Boot\nPort: 8090\nInstance 1" as api1
+  rectangle "API Service\nSpring Boot\nPort: 8090\nInstance 2" as api2
   rectangle "Discovery Server\nEureka\nPort: 8761" as discovery
   database "Database\nMySQL\nPort: 3306" as db
 }
@@ -40,11 +41,15 @@ rectangle "Monitoring Network" {
 
 client --> frontend
 frontend --> gateway
-gateway --> api
-api --> db
+gateway --> api1 : load balanced
+gateway --> api2 : load balanced
+api1 --> db
+api2 --> db
 gateway --> discovery
-api --> discovery
-api --> prometheus
+api1 --> discovery
+api2 --> discovery
+api1 --> prometheus
+api2 --> prometheus
 prometheus --> grafana
 
 @enduml
