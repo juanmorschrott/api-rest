@@ -62,7 +62,7 @@ Frontend: [http://localhost:80](http://localhost:80)
 
 ### Gateway
 
-Spring Cloud Gateway as gatekeeper
+Spring Cloud Gateway as gatekeeper and load balancer.
 
 BASE-URL:   http://localhost:8080
 
