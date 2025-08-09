@@ -40,8 +40,8 @@ services:
     networks:
       - private
       - monitoring
-    ports:
-      - 8090:8090
+    deploy:
+      replicas: 2
 
   db:
     image: db
