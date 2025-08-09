@@ -1,7 +1,7 @@
 <div id="list-hotel" class="col-md-12">
   <h2> Hotel Details</h2>
   <hr/>
-  <button class="btn btn-danger" (click)="addHotel()"> Add Hotel</button>
+  <button class="btn btn-primary" (click)="addHotel()"> Add Hotel</button>
   <hr/>
 
   <table class="table table-striped">
@@ -21,9 +21,9 @@
         <td>{{hotel.description}}</td>
         <td>{{hotel.price | number | currency:'EUR'}}</td>
         <td>
-          <button class="btn btn-danger" (click)="deleteHotel(hotel)"> Delete</button>
-          <button class="btn btn-danger" (click)="editHotel(hotel)" style="margin-left: 20px;"> Edit</button>
-          <button class="btn btn-info" (click)="hotelDetails(hotel)" style="margin-left: 10px"> Details</button>
+          <button class="btn btn-warning me-2" (click)="deleteHotel(hotel)"> Delete</button>
+          <button class="btn btn-secondary me-2" (click)="editHotel(hotel)"> Edit</button>
+          <button class="btn btn-primary me-2" (click)="hotelDetails(hotel)"> Details</button>
         </td>
     </tr>
     </tbody>

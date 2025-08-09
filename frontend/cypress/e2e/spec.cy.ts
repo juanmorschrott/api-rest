@@ -8,7 +8,7 @@ describe('Hotels E2E', () => {
     cy.get('input[name=name]').type('test')
     cy.get('input[name=description]').type('test description')
     cy.get('input[name=price]').type('55.99')
-    cy.contains('button', 'Update').click()
+    cy.contains('button', 'Add hotel').click()
     cy.contains('test')
 
     // Update
