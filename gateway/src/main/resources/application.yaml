@@ -1,32 +1,39 @@
 server:
- port: 8080
+  port: 8080
 
 management:
   endpoints:
     web:
       exposure:
         include:
-        - env
-        - health
-        - info
-        - prometheus
-        - metrics
-  
+          - env
+          - health
+          - info
+          - prometheus
+          - metrics
+
 spring:
- application:
-  name: gateway
- cloud:
-  gateway:
-    default-filters:
-    - DedupeResponseHeader=Access-Control-Allow-Credentials Access-Control-Allow-Origin
-    globalcors:
-        corsConfigurations:
-          '[/**]':
-            allowedOrigins: "*"
-            allowedMethods: "*"
-            allowedHeaders: "*"
-    routes:
-    - id: api
-      uri: lb://api
-      predicates:
-       - Path=/api/v1/hotels/**
+  application:
+    name: gateway
+  cloud:
+    gateway:
+      default-filters:
+        - DedupeResponseHeader=Access-Control-Allow-Credentials Access-Control-Allow-Origin
+      routes:
+        - id: api
+          uri: lb://api
+          predicates:
+            - Path=/api/v1/hotels/**
+        # Swagger UI routes
+        - id: api-swagger-ui
+          uri: lb://api
+          predicates:
+            - Path=/swagger-ui.html
+        - id: api-swagger-resources
+          uri: lb://api
+          predicates:
+            - Path=/swagger-ui/**
+        - id: api-openapi-docs
+          uri: lb://api
+          predicates:
+            - Path=/v3/api-docs/**
