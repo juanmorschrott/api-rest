@@ -1,18 +1,19 @@
-<h2>Hotel Details</h2>
 
-<hr/>
-<div>
-  <div>
-    <label><b>Name: </b></label> {{hotel.name}}
-  </div>
-  <div>
-    <label><b>Description: </b></label> {{hotel.description}}
-  </div>
-  <div>
-    <label><b>Mean Room Price: </b></label> {{hotel.price | number | currency:'EUR'}}
+<div class="container py-3">
+  <h2 class="text-center">Hotel Details</h2>
+  <hr/>
+  <div class="row justify-content-center">
+    <div class="col-12 col-md-8 col-lg-6">
+      <div class="mb-2">
+        <label><b>Name: </b></label> {{hotel.name}}
+      </div>
+      <div class="mb-2">
+        <label><b>Description: </b></label> {{hotel.description}}
+      </div>
+      <div class="mb-2">
+        <label><b>Mean Room Price: </b></label> {{hotel.price | number | currency:'EUR'}}
+      </div>
+      <button (click)="list()" class="btn btn-primary mt-3">Back to Hotels List</button>
+    </div>
   </div>
 </div>
-
-<br>
-<br>
-<button (click)="list()" class="btn btn-primary">Back to Hotels List</button><br>

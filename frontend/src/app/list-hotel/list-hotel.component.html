@@ -1,10 +1,10 @@
-<div id="list-hotel" class="col-md-12">
+<div id="list-hotel" class="container-fluid">
   <h2> Hotel Details</h2>
   <hr/>
   <button class="btn btn-primary" (click)="addHotel()"> Add Hotel</button>
   <hr/>
-
-  <table class="table table-striped">
+  <div class="table-responsive">
+    <table class="table table-striped align-middle">
     <thead>
     <tr>
       <th class="hidden">Id</th>
@@ -27,5 +27,6 @@
         </td>
     </tr>
     </tbody>
-  </table>
+    </table>
+  </div>
 </div>
