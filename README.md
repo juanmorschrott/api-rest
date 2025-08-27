@@ -119,4 +119,5 @@ And that's it:
 - Migrate observability to Open Telemetry
 - Replace application.properties files with Spring Cloud Config Server
 - Include login mecanism with Spring Cloud Authorization Server
+- Migrate API to Spring Modulith
  
