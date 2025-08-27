@@ -113,3 +113,10 @@ Access to Grafana Dashboard: [http://localhost:3000](http://localhost:3000):
 And that's it:
 
 ![grafana](documentation/grafana.png)
+
+### TODO
+
+- Migrate observability to Open Telemetry
+- Replace application.properties files with Spring Cloud Config Server
+- Include login mecanism with Spring Cloud Authorization Server
+ 
