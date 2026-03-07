@@ -3,7 +3,7 @@
 Simple Spring Cloud based Microservice system for training purposes.
 
 Technologies included:
- - Angular 18 simple frontend application
+ - React 18 simple frontend application
  - Cypress e2e functional test
  - Spring Cloud Gateway
  - Spring Cloud Discovery Server
@@ -16,7 +16,7 @@ Technologies included:
 
 ```mermaid
 graph TD
-    Client([Client/Frontend Angular]) --> Gateway[API Gateway :8080]
+    Client([Client/Frontend React]) --> Gateway[API Gateway :8080]
     Gateway --> Discovery[Discovery Server :8761]
     Gateway --> API[API REST Modulith :8090]
     API -.-> |Registers| Discovery
@@ -29,7 +29,7 @@ graph TD
 
  - Java openjdk version >=21
  - Maven >=3.9.11
- - Node 18.20.8
+ - Node >= 18.20.8
  - Docker & docker-compose
 
 ## Run the project
@@ -65,7 +65,7 @@ $ npx cypress open --e2e
 
 ### Frontend
 
-Angular Application with a very simple interface to make CRUD requests.
+React Application with a very simple interface to make CRUD requests.
 
 Frontend: [http://localhost:80](http://localhost:80)
 
