@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+
+    <changeSet id="2" author="juan">
+        <insert tableName="hotel">
+            <column name="name" value="Atenea"/>
+            <column name="description" value="Hotel economico y confortable"/>
+            <column name="price" value="34.5"/>
+        </insert>
+        <insert tableName="hotel">
+            <column name="name" value="Kontiki"/>
+            <column name="description" value="Gran calidad"/>
+            <column name="price" value="104.5"/>
+        </insert>
+        <insert tableName="hotel">
+            <column name="name" value="Apollo"/>
+            <column name="description" value="Hotel economico y confortable"/>
+            <column name="price" value="34.54"/>
+        </insert>
+        <insert tableName="hotel">
+            <column name="name" value="Oleander"/>
+            <column name="description" value="Gran calidad"/>
+            <column name="price" value="104.5"/>
+        </insert>
+        <insert tableName="hotel">
+            <column name="name" value="Gran Playa"/>
+            <column name="description" value="Hotel economico y confortable"/>
+            <column name="price" value="34.556"/>
+        </insert>
+        <insert tableName="hotel">
+            <column name="name" value="Riu Palace"/>
+            <column name="description" value="Hotel economico y confortable"/>
+            <column name="price" value="34.5"/>
+        </insert>
+        <insert tableName="hotel">
+            <column name="name" value="Carioca"/>
+            <column name="description" value="Gran calidad"/>
+            <column name="price" value="104.5"/>
+        </insert>
+    </changeSet>
+
+</databaseChangeLog>

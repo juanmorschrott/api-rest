@@ -16,7 +16,7 @@ public class HotelDtoToHotelConverter implements Converter<HotelDto, Hotel> {
                 .id(source.getId())
                 .name(source.getName())
                 .description(source.getDescription())
-                .price(BigDecimal.valueOf(source.getPrice()))
+                .price(source.getPrice() != null ? BigDecimal.valueOf(source.getPrice()) : null)
                 .build();
     }
 

@@ -1,8 +1,0 @@
-DROP TABLE IF EXISTS hotel;
-CREATE TABLE hotel (
-    id BIGINT NOT NULL AUTO_INCREMENT,
-    name VARCHAR(100) NOT NULL,
-    description VARCHAR(250) NOT NULL,
-    price DECIMAL,
-    PRIMARY KEY (id)
-);

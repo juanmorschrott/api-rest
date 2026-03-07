@@ -90,7 +90,7 @@ public class HotelControllerIntegrationTest {
     public void whenUpdate_thenUpdatedHotel() {
         // given
         HotelDto hotelDto = HotelFixtures.hotelDto;
-        Hotel updatedHotel = new Hotel(1, "Updated Foo", "Test Description", BigDecimal.valueOf(99.9));
+        Hotel updatedHotel = new Hotel(1L, "Updated Foo", "Test Description", BigDecimal.valueOf(99.9));
         given(hotelService.update(hotelDto)).willReturn(updatedHotel);
 
         // when

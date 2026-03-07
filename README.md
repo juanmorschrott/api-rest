@@ -8,6 +8,7 @@ Technologies included:
  - Spring Cloud Gateway
  - Spring Cloud Discovery Server
  - Spring Boot 4.0.3 backend REST API (Spring Modulith)
+ - Liquibase for DB migrations
  - Prometheus and Grafana monitoring
  - Docker & docker-compose container technology
  - Jmeter test plan
@@ -18,10 +19,14 @@ Technologies included:
 graph TD
     Client([Client/Frontend React]) --> Gateway[API Gateway :8080]
     Gateway --> Discovery[Discovery Server :8761]
-    Gateway --> API[API REST Modulith :8090]
-    API -.-> |Registers| Discovery
-    API --> DB[(MySQL DB)]
-    API -.-> Prometheus[Prometheus Metrics]
+    Gateway --> API1[API Instance 1 :8090]
+    Gateway --> API2[API Instance 2 :8090]
+    API1 -.-> |Registers| Discovery
+    API2 -.-> |Registers| Discovery
+    API1 --> DB[(MySQL DB)]
+    API2 --> DB[(MySQL DB)]
+    API1 -.-> Prometheus[Prometheus Metrics]
+    API2 -.-> Prometheus
     Grafana[Grafana :3000] --> Prometheus[Prometheus :9090]
 ```
 
@@ -46,13 +51,6 @@ Once started browse the app following this link:
 URL:   http://localhost
 
 Or execute e2e tests by running:
-
-```bash
-$ cd ./frontend
-$ npx cypress run
-```
-
-If you want to execute Cypress GUI run:
 
 ```bash
 $ cd ./frontend
@@ -83,9 +81,10 @@ Dashboard: [http://localhost:8761](http://localhost:8761)
 
 ### Api
 
-Spring-boot WEB CRUD Application.
+Spring-boot WEB CRUD Application. The service is scaled to 2 replicas for load balancing.
 
-BASE-URL:   http://localhost:8090/api/v1/hotels
+BASE-URL: http://localhost:8080/api/v1/hotels (via Gateway)
+Direct Instance Access: http://localhost:8090/api/v1/hotels (if exposed)
 
 |OPERATION|METHOD|URI|
 |---|---|---|

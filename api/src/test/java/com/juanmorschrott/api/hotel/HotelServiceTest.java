@@ -44,7 +44,7 @@ public class HotelServiceTest {
         Hotel found = hotelService.get(1L);
 
         // then
-        assertThat(found.getId()).isEqualTo(1);
+        assertThat(found.getId()).isEqualTo(1L);
     }
 
     @Test

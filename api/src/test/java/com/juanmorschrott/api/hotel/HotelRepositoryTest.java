@@ -31,7 +31,7 @@ public class HotelRepositoryTest {
     @Test
     public void whenFindById_thenReturnHotel() {
         // given
-        Hotel hotel = new Hotel(1, "Test Name", "Test Description", BigDecimal.valueOf(99.9));
+        Hotel hotel = new Hotel(1L, "Test Name", "Test Description", BigDecimal.valueOf(99.9));
         entityManager.merge(hotel);
         entityManager.flush();
 
@@ -45,7 +45,7 @@ public class HotelRepositoryTest {
     @Test
     public void whenFindByName_thenReturnHotel() {
         // given
-        Hotel hotel = new Hotel(1, "Test Name", "Test Description", BigDecimal.valueOf(99.9));
+        Hotel hotel = new Hotel(1L, "Test Name", "Test Description", BigDecimal.valueOf(99.9));
         entityManager.merge(hotel);
         entityManager.flush();
 

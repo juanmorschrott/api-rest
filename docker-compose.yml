@@ -40,6 +40,9 @@ services:
     networks:
       - private
       - monitoring
+    environment:
+      - MYSQL_HOST=db
+    restart: always
     deploy:
       replicas: 2
 
