@@ -1,9 +1,5 @@
-package com.juanmorschrott.api.service;
+package com.juanmorschrott.api.hotel;
 
-import com.juanmorschrott.api.exception.HotelNotFoundException;
-import com.juanmorschrott.api.fixtures.HotelFixtures;
-import com.juanmorschrott.api.model.Hotel;
-import com.juanmorschrott.api.repository.HotelRepository;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;

@@ -1,6 +1,5 @@
-package com.juanmorschrott.api.repository;
+package com.juanmorschrott.api.hotel;
 
-import com.juanmorschrott.api.model.Hotel;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.data.jpa.test.autoconfigure.DataJpaTest;

@@ -1,9 +1,5 @@
-package com.juanmorschrott.api.controller;
+package com.juanmorschrott.api.hotel;
 
-import com.juanmorschrott.api.exception.HotelNotFoundException;
-import com.juanmorschrott.api.fixtures.HotelFixtures;
-import com.juanmorschrott.api.model.Hotel;
-import com.juanmorschrott.api.service.HotelService;
 import org.hamcrest.Matchers;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

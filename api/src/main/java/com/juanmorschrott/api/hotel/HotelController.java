@@ -1,8 +1,5 @@
-package com.juanmorschrott.api.controller;
+package com.juanmorschrott.api.hotel;
 
-import com.juanmorschrott.api.dto.HotelDto;
-import com.juanmorschrott.api.model.Hotel;
-import com.juanmorschrott.api.service.HotelService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

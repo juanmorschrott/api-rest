@@ -1,8 +1,6 @@
-package com.juanmorschrott.api.fixtures;
+package com.juanmorschrott.api.hotel;
 
 
-import com.juanmorschrott.api.dto.HotelDto;
-import com.juanmorschrott.api.model.Hotel;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 

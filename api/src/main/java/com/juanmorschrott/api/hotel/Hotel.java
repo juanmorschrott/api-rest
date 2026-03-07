@@ -1,4 +1,4 @@
-package com.juanmorschrott.api.model;
+package com.juanmorschrott.api.hotel;
 
 import lombok.*;
 

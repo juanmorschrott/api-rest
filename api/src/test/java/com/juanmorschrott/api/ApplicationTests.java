@@ -1,15 +1,13 @@
 package com.juanmorschrott.api;
 
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
-import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.modulith.core.ApplicationModules;
 
-@Disabled("This integration test will be replaced with test containers")
-@SpringBootTest
-public class ApplicationTests {
+class ApplicationTests {
 
-	@Test
-	public void contextLoads() {
-	}
+    @Test
+    void verifiesModularStructure() {
+        ApplicationModules.of(Application.class).verify();
+    }
 
 }

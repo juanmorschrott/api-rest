@@ -1,9 +1,5 @@
-package com.juanmorschrott.api.controller;
+package com.juanmorschrott.api.hotel;
 
-import com.juanmorschrott.api.dto.HotelDto;
-import com.juanmorschrott.api.fixtures.HotelFixtures;
-import com.juanmorschrott.api.model.Hotel;
-import com.juanmorschrott.api.service.HotelService;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,11 +26,10 @@ import org.testcontainers.junit.jupiter.Testcontainers;
 /**
  * Integration test using TestRestTemplate
  */
-
 @Testcontainers
 @AutoConfigureTestRestTemplate
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-public class HotelControllerWithContextTest {
+public class HotelControllerIntegrationTest {
 
     @Container
     @ServiceConnection

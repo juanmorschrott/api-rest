@@ -1,4 +1,4 @@
-package com.juanmorschrott.api.exception;
+package com.juanmorschrott.api.hotel;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ControllerAdvice;

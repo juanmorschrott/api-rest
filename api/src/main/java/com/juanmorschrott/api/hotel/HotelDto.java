@@ -1,4 +1,4 @@
-package com.juanmorschrott.api.dto;
+package com.juanmorschrott.api.hotel;
 
 import lombok.*;
 

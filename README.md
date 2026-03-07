@@ -7,14 +7,23 @@ Technologies included:
  - Cypress e2e functional test
  - Spring Cloud Gateway
  - Spring Cloud Discovery Server
- - Spring Boot 3.5.4 backend REST API
+ - Spring Boot 4.0.3 backend REST API (Spring Modulith)
  - Prometheus and Grafana monitoring
  - Docker & docker-compose container technology
  - Jmeter test plan
 
 ## Diagram
 
-![architecture](documentation/api-rest-architecture.png)
+```mermaid
+graph TD
+    Client([Client/Frontend Angular]) --> Gateway[API Gateway :8080]
+    Gateway --> Discovery[Discovery Server :8761]
+    Gateway --> API[API REST Modulith :8090]
+    API -.-> |Registers| Discovery
+    API --> DB[(MySQL DB)]
+    API -.-> Prometheus[Prometheus Metrics]
+    Grafana[Grafana :3000] --> Prometheus[Prometheus :9090]
+```
 
 ## Dependencies
 
@@ -119,5 +128,4 @@ And that's it:
 - Migrate observability to Open Telemetry
 - Replace application.properties files with Spring Cloud Config Server
 - Include login mecanism with Spring Cloud Authorization Server
-- Migrate API to Spring Modulith
  
