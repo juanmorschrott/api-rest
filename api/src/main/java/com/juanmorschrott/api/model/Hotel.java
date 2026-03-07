@@ -3,6 +3,8 @@ package com.juanmorschrott.api.model;
 import lombok.*;
 
 import jakarta.persistence.*;
+
+import java.io.Serial;
 import java.io.Serializable;
 import java.math.BigDecimal;
 
@@ -15,6 +17,7 @@ import java.math.BigDecimal;
 @ToString
 public class Hotel implements Serializable {
 
+    @Serial
     private static final long serialVersionUID = 1L;
 
     @Id
