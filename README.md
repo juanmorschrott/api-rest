@@ -3,23 +3,23 @@
 Simple Spring Cloud based Microservice system for training purposes.
 
 Technologies included:
- - React 18 simple frontend application
- - Cypress e2e functional test
- - Spring Cloud Gateway
- - Spring Cloud Discovery Server
- - Spring Boot 3.x backend REST API
- - **Spring Modulith** for Modular Monolith architecture
- - **MapStruct** for high-performance object mapping
- - **DTO Pattern** for API/Domain separation
- - **Bean Validation** (JSR 303/380)
- - **RFC 7807** Problem Details for standardized error responses
- - **Liquibase** for DB migrations
- - **Prometheus, Grafana, Loki, and Tempo** for full observability stack
+ - **React 18** simple frontend application
+ - **Cypress** e2e functional test
+ - **Spring Cloud Gateway**
+ - **Spring Cloud Discovery Server**
+ - **Spring Boot 4.x** REST API
+    - **Spring Modulith** for Modular Monolith architecture
+    - **MapStruct** for high-performance object mapping
+    - **DTO Pattern** for API/Domain separation
+    - **Bean Validation** (JSR 303/380)
+    - **RFC 7807** Problem Details for standardized error responses
+    - **Liquibase** for DB migrations
+    - **Testcontainers** for reliable integration testing
+    - **Jmeter** test plan
+ - **Grafana & Prometheus** for observability
  - **Docker & docker-compose** container technology
- - **Testcontainers** for reliable integration testing
- - Jmeter test plan
 
-## Diagram
+## Architecture Diagram
 
 ```mermaid
 graph TD
@@ -71,7 +71,7 @@ $ npx cypress open --e2e
 
 React Application with a very simple interface to make CRUD requests.
 
-Frontend: [http://localhost:80](http://localhost:80)
+Frontend: [http://localhost](http://localhost)
 
 ### Gateway
 
@@ -92,13 +92,13 @@ Spring-boot WEB CRUD Application using a modular architecture. The service is sc
 BASE-URL: http://localhost:8080/api/v1/hotels (via Gateway)
 Direct Instance Access: http://localhost:8090/api/v1/hotels (if exposed)
 
-| OPERATION | METHOD | URI | SUCCESS STATUS |
-|-----------|--------|-----|----------------|
-| LIST      | GET    | `/api/v1/hotels` | 200 OK |
-| CREATE    | POST   | `/api/v1/hotels` | 201 Created |
-| READ      | GET    | `/api/v1/hotels/{id}` | 200 OK |
-| UPDATE    | PUT    | `/api/v1/hotels/{id}` | 200 OK |
-| DELETE    | DELETE | `/api/v1/hotels/{id}` | 204 No Content |
+| OPERATION | METHOD | URI                  | SUCCESS STATUS                   |
+|-----------|--------|----------------------|----------------------------------|
+| LIST      | GET    | `/api/v1/hotels`     | 200 OK                           |
+| CREATE    | POST   | `/api/v1/hotels`     | 201 Created                      |
+| READ      | GET    | `/api/v1/hotels/{id}`| 200 OK                           |
+| UPDATE    | PUT    | `/api/v1/hotels/{id}`| 200 OK                           |
+| DELETE    | DELETE | `/api/v1/hotels/{id}`| 204 No Content                   |
 
 API Documentation: [http://localhost:8080/swagger-ui.html](http://localhost:8080/swagger-ui.html)
 
@@ -131,5 +131,5 @@ And that's it:
 
 - Migrate observability to Open Telemetry
 - Replace application.properties files with Spring Cloud Config Server
-- Include login mecanism with Spring Cloud Authorization Server
+- Include login mecanism
  
