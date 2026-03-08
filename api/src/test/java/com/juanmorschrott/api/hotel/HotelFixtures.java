@@ -1,6 +1,5 @@
 package com.juanmorschrott.api.hotel;
 
-
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 
@@ -11,39 +10,14 @@ import java.util.List;
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class HotelFixtures {
 
-    public static HotelDto hotelDto = HotelDto.builder()
-            .id(1L)
-            .name("Foo")
-            .description("Test Description")
-            .price(99.9)
-            .build();
+        public static HotelDto hotelDto = new HotelDto(1L, "Foo", "Test Description", 99.9);
 
-    public static Hotel hotel = Hotel.builder()
-            .id(1L)
-            .name("Foo")
-            .description("Test Description")
-            .price(BigDecimal.valueOf(99.9))
-            .build();
+        public static Hotel hotel = new Hotel(1L, "Foo", "Test Description", BigDecimal.valueOf(99.9));
 
-    public static List<Hotel> getHotelsArray() {
-        return Arrays.asList(
-                Hotel.builder()
-                        .id(1L)
-                        .name("Foo1")
-                        .description("Test Description 1")
-                        .price(BigDecimal.valueOf(10.0))
-                        .build(),
-                Hotel.builder()
-                        .id(2L)
-                        .name("Foo2")
-                        .description("Test Description 2")
-                        .price(BigDecimal.valueOf(20.0))
-                        .build(),
-                Hotel.builder()
-                        .id(3L)
-                        .name("Foo3")
-                        .description("Test Description 3")
-                        .price(BigDecimal.valueOf(30.0))
-                        .build());
-    }
+        public static List<Hotel> getHotelsArray() {
+                return Arrays.asList(
+                                new Hotel(1L, "Foo1", "Test Description 1", BigDecimal.valueOf(10.0)),
+                                new Hotel(2L, "Foo2", "Test Description 2", BigDecimal.valueOf(20.0)),
+                                new Hotel(3L, "Foo3", "Test Description 3", BigDecimal.valueOf(30.0)));
+        }
 }

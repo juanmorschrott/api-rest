@@ -4,18 +4,16 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import lombok.RequiredArgsConstructor;
+
 import java.util.List;
 
 @RestController
 @RequestMapping(value = "/api/v1/hotels")
+@RequiredArgsConstructor
 public class HotelController {
 
-    private HotelService service;
-
-    public HotelController(HotelService service) {
-
-        this.service = service;
-    }
+    private final HotelService service;
 
     @GetMapping
     public ResponseEntity<List<Hotel>> list() {

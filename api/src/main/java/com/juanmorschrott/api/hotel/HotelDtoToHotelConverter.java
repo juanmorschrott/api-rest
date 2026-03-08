@@ -1,6 +1,5 @@
 package com.juanmorschrott.api.hotel;
 
-
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.stereotype.Component;
 
@@ -13,10 +12,10 @@ public class HotelDtoToHotelConverter implements Converter<HotelDto, Hotel> {
     public Hotel convert(HotelDto source) {
 
         return Hotel.builder()
-                .id(source.getId())
-                .name(source.getName())
-                .description(source.getDescription())
-                .price(source.getPrice() != null ? BigDecimal.valueOf(source.getPrice()) : null)
+                .id(source.id())
+                .name(source.name())
+                .description(source.description())
+                .price(source.price() != null ? BigDecimal.valueOf(source.price()) : null)
                 .build();
     }
 
