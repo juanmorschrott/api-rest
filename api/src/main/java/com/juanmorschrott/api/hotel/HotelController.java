@@ -1,10 +1,10 @@
 package com.juanmorschrott.api.hotel;
 
+import jakarta.validation.Valid;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import lombok.RequiredArgsConstructor;
 
 import java.util.List;
 
@@ -16,34 +16,30 @@ public class HotelController {
     private final HotelService service;
 
     @GetMapping
-    public ResponseEntity<List<Hotel>> list() {
-
-        return new ResponseEntity<>(service.list(), HttpStatus.OK);
+    public ResponseEntity<List<HotelDto>> list() {
+        return ResponseEntity.ok().body(service.list());
     }
 
     @PostMapping
-    public ResponseEntity<Hotel> create(@RequestBody HotelDto hotelDto) {
-
-        return new ResponseEntity<>(service.create(hotelDto), HttpStatus.OK);
+    public ResponseEntity<HotelDto> create(@Valid @RequestBody HotelDto hotelDto) {
+        return ResponseEntity.status(HttpStatus.CREATED).body(service.create(hotelDto));
     }
 
     @GetMapping(value = "/{id}")
-    public ResponseEntity<Hotel> get(@PathVariable Long id) {
-
-        return new ResponseEntity<>(service.get(id), HttpStatus.OK);
+    public ResponseEntity<HotelDto> get(@PathVariable Long id) {
+        return ResponseEntity.ok().body(service.get(id));
     }
 
-    @PutMapping
-    public ResponseEntity<Hotel> update(@RequestBody HotelDto hotelDto) {
-
-        return new ResponseEntity<>(service.update(hotelDto), HttpStatus.OK);
+    @PutMapping("/{id}")
+    public ResponseEntity<HotelDto> update(@PathVariable Long id, @Valid @RequestBody HotelDto hotelDto) {
+        return ResponseEntity.ok().body(service.update(id, hotelDto));
     }
 
     @DeleteMapping(value = "/{id}")
-    public ResponseEntity<String> delete(@PathVariable Long id) {
+    public ResponseEntity<Void> delete(@PathVariable Long id) {
         service.delete(id);
 
-        return new ResponseEntity<>(HttpStatus.OK);
+        return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
 
 }

@@ -1,5 +1,6 @@
 package com.juanmorschrott.api.hotel;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -7,47 +8,46 @@ import java.util.Objects;
 import java.util.Optional;
 
 @Service
+@RequiredArgsConstructor
 public class HotelService {
 
-    private HotelRepository repository;
-    private HotelDtoToHotelConverter converter;
+    private final HotelRepository repository;
+    private final HotelMapper mapper;
 
-    public HotelService(HotelRepository repository, HotelDtoToHotelConverter converter) {
-        this.repository = repository;
-        this.converter = converter;
+    public List<HotelDto> list() {
+        return mapper.toDtoList(repository.findAll());
     }
 
-    public List<Hotel> list() {
-
-        return repository.findAll();
+    public HotelDto create(HotelDto hotelDto) {
+        Hotel hotel = mapper.toEntity(hotelDto);
+        return mapper.toDto(repository.save(Objects.requireNonNull(hotel)));
     }
 
-    public Hotel create(HotelDto hotelDto) {
-        Hotel hotel = this.converter.convert(hotelDto);
-
-        return repository.save(Objects.requireNonNull(hotel));
+    public HotelDto get(Long id) {
+        return repository.findById(id)
+                .map(mapper::toDto)
+                .orElseThrow(() -> new HotelNotFoundException(id));
     }
 
-    public Hotel get(Long id) {
-
-        return repository.findById(id).orElseThrow(() -> new HotelNotFoundException(id));
+    public HotelDto getByName(String name) {
+        return repository.findByName(name)
+                .map(mapper::toDto)
+                .orElseThrow(() -> new HotelNotFoundException(name));
     }
 
-    public Hotel getByName(String name) {
+    public HotelDto update(Long id, HotelDto hotelDto) {
+        if (!repository.existsById(id)) {
+            throw new HotelNotFoundException(id);
+        }
 
-        return repository.findByName(name).orElseThrow(() -> new HotelNotFoundException(name));
-    }
+        Hotel hotel = mapper.toEntity(hotelDto);
+        hotel.setId(id);
 
-    public Hotel update(HotelDto hotelDto) {
-        Hotel hotel = this.converter.convert(hotelDto);
-
-        return repository.save(Objects.requireNonNull(hotel));
+        return mapper.toDto(repository.save(hotel));
     }
 
     public void delete(Long id) {
-        Optional<Hotel> hotel = repository.findById(id);
-
-        hotel.ifPresent(value -> repository.delete(value));
+        repository.findById(id).ifPresent(repository::delete);
     }
 
 }

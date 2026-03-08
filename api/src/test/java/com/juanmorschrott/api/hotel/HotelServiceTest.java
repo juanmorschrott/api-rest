@@ -24,41 +24,57 @@ public class HotelServiceTest {
     @Mock
     private HotelRepository hotelRepository;
 
+    @Mock
+    private HotelMapper mapper;
+
     @Test
     public void whenList_thenShouldReturnAllValues() {
+        // given
+        List<Hotel> entityList = HotelFixtures.getHotelsArray();
+        List<HotelDto> dtoList = HotelFixtures.getHotelsDtoList();
+
         // when
-        when(hotelRepository.findAll()).thenReturn(HotelFixtures.getHotelsArray());
-        List<Hotel> hotels = hotelService.list();
+        when(hotelRepository.findAll()).thenReturn(entityList);
+        when(mapper.toDtoList(entityList)).thenReturn(dtoList);
+
+        List<HotelDto> hotels = hotelService.list();
 
         // then
-        assertThat(hotels.get(0).getName()).isEqualTo(HotelFixtures.getHotelsArray().get(0).getName());
+        assertThat(hotels.get(0).name()).isEqualTo(dtoList.get(0).name());
         assertThat(hotels.size()).isEqualTo(3);
     }
 
     @Test
     public void whenFindWithValidId_thenHotelShouldBeFound() {
-        // when
+        // given
         Hotel hotel = HotelFixtures.hotel;
+        HotelDto hotelDto = HotelFixtures.hotelDto;
 
+        // when
         when(hotelRepository.findById(anyLong())).thenReturn(of(hotel));
-        Hotel found = hotelService.get(1L);
+        when(mapper.toDto(hotel)).thenReturn(hotelDto);
+
+        HotelDto found = hotelService.get(1L);
 
         // then
-        assertThat(found.getId()).isEqualTo(1L);
+        assertThat(found.id()).isEqualTo(1L);
     }
 
     @Test
     public void whenFindWithValidName_thenHotelShouldBeFound() {
         // given
         Hotel hotel = HotelFixtures.hotel;
+        HotelDto hotelDto = HotelFixtures.hotelDto;
         String name = "Foo";
 
         // when
         when(hotelRepository.findByName(anyString())).thenReturn(of(hotel));
-        Hotel found = hotelService.getByName(name);
+        when(mapper.toDto(hotel)).thenReturn(hotelDto);
+
+        HotelDto found = hotelService.getByName(name);
 
         // then
-        assertThat(found.getName()).isEqualTo(name);
+        assertThat(found.name()).isEqualTo(name);
     }
 
     @Test

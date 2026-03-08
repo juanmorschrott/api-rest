@@ -1,8 +1,7 @@
 package com.juanmorschrott.api.hotel;
 
-import lombok.*;
-
 import jakarta.persistence.*;
+import lombok.*;
 
 import java.io.Serial;
 import java.io.Serializable;

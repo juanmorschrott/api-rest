@@ -20,7 +20,7 @@ export const hotelService = {
   },
 
   updateHotel: async (hotel: Hotel): Promise<Hotel> => {
-    const response = await axios.put(API_URL, hotel);
+    const response = await axios.put(`${API_URL}/${hotel.id}`, hotel);
     return response.data;
   },
 

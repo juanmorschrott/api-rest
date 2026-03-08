@@ -20,4 +20,11 @@ public class HotelFixtures {
                                 new Hotel(2L, "Foo2", "Test Description 2", BigDecimal.valueOf(20.0)),
                                 new Hotel(3L, "Foo3", "Test Description 3", BigDecimal.valueOf(30.0)));
         }
+
+        public static List<HotelDto> getHotelsDtoList() {
+                return Arrays.asList(
+                                new HotelDto(1L, "Foo1", "Test Description 1", 10.0),
+                                new HotelDto(2L, "Foo2", "Test Description 2", 20.0),
+                                new HotelDto(3L, "Foo3", "Test Description 3", 30.0));
+        }
 }

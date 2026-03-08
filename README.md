@@ -7,10 +7,16 @@ Technologies included:
  - Cypress e2e functional test
  - Spring Cloud Gateway
  - Spring Cloud Discovery Server
- - Spring Boot 4.0.3 backend REST API (Spring Modulith)
- - Liquibase for DB migrations
- - Prometheus and Grafana monitoring
- - Docker & docker-compose container technology
+ - Spring Boot 3.x backend REST API
+ - **Spring Modulith** for Modular Monolith architecture
+ - **MapStruct** for high-performance object mapping
+ - **DTO Pattern** for API/Domain separation
+ - **Bean Validation** (JSR 303/380)
+ - **RFC 7807** Problem Details for standardized error responses
+ - **Liquibase** for DB migrations
+ - **Prometheus, Grafana, Loki, and Tempo** for full observability stack
+ - **Docker & docker-compose** container technology
+ - **Testcontainers** for reliable integration testing
  - Jmeter test plan
 
 ## Diagram
@@ -81,21 +87,20 @@ Dashboard: [http://localhost:8761](http://localhost:8761)
 
 ### Api
 
-Spring-boot WEB CRUD Application. The service is scaled to 2 replicas for load balancing.
+Spring-boot WEB CRUD Application using a modular architecture. The service is scaled to 2 replicas for load balancing.
 
 BASE-URL: http://localhost:8080/api/v1/hotels (via Gateway)
 Direct Instance Access: http://localhost:8090/api/v1/hotels (if exposed)
 
-|OPERATION|METHOD|URI|
-|---|---|---|
-|CREATE|GET|http://localhost:8090/api/v1/hotels|
-|READ|GET|http://localhost:8090/api/v1/hotels/{id}|
-|UPDATE|PUT|http://localhost:8090/api/v1/hotels|
-|DELETE|DELETE|http://localhost:8090/api/v1/hotels/{id}|
+| OPERATION | METHOD | URI | SUCCESS STATUS |
+|-----------|--------|-----|----------------|
+| LIST      | GET    | `/api/v1/hotels` | 200 OK |
+| CREATE    | POST   | `/api/v1/hotels` | 201 Created |
+| READ      | GET    | `/api/v1/hotels/{id}` | 200 OK |
+| UPDATE    | PUT    | `/api/v1/hotels/{id}` | 200 OK |
+| DELETE    | DELETE | `/api/v1/hotels/{id}` | 204 No Content |
 
-API Documentation:
-
-[http://localhost:8080/swagger-ui.html](http://localhost:8080/swagger-ui.html)
+API Documentation: [http://localhost:8080/swagger-ui.html](http://localhost:8080/swagger-ui.html)
 
 ### Prometheus
 

@@ -28,10 +28,10 @@ public class HotelControllerTest {
     @Test
     public void whenFindId_thenReturnHotel() throws Exception {
         // given
-        Hotel hotel = HotelFixtures.hotel;
+        HotelDto hotelDto = HotelFixtures.hotelDto;
 
         // when
-        when(hotelService.get(1L)).thenReturn(hotel);
+        when(hotelService.get(1L)).thenReturn(hotelDto);
 
         // then
         mockMvc.perform(get("/api/v1/hotels/1").contentType(MediaType.APPLICATION_JSON))
