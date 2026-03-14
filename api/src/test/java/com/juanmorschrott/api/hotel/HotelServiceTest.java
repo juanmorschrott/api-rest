@@ -1,5 +1,11 @@
 package com.juanmorschrott.api.hotel;
 
+import com.juanmorschrott.api.hotel.internal.Hotel;
+import com.juanmorschrott.api.hotel.internal.HotelNotFoundException;
+import com.juanmorschrott.api.hotel.internal.HotelRepository;
+import com.juanmorschrott.api.hotel.internal.HotelFixtures;
+import com.juanmorschrott.api.hotel.internal.HotelMapper;
+
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;

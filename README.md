@@ -6,6 +6,7 @@ Technologies included:
  - **React 18** simple frontend application
  - **Cypress** e2e functional test
  - **Spring Cloud Gateway**
+ - **Spring Cloud Config Server**
  - **Spring Cloud Discovery Server**
  - **Spring Boot 4.x** REST API
     - **Spring Modulith** for Modular Monolith architecture
@@ -23,6 +24,11 @@ Technologies included:
 
 ```mermaid
 graph TD
+    ConfigStore[(config-repo/)] -.-> Config[Config Server :8888]
+    Config -.-> |Provides config| Gateway
+    Config -.-> |Provides config| Discovery
+    Config -.-> |Provides config| API1
+    Config -.-> |Provides config| API2
     Client([Client/Frontend React]) --> Gateway[API Gateway :8080]
     Gateway --> Discovery[Discovery Server :8761]
     Gateway --> API1[API Instance 1 :8090]
@@ -79,6 +85,12 @@ Spring Cloud Gateway as gatekeeper and load balancer.
 
 BASE-URL:   http://localhost:8080
 
+### Config-server
+
+Spring Cloud Config Server using the Native profile to fetch all the configurations for `gateway`, `discovery-server`, and `api` from the local `config-repo` directory.
+
+URL: [http://localhost:8888](http://localhost:8888)
+
 ### Discovery-server
 
 Spring Cloud Discovery Server
@@ -130,6 +142,5 @@ And that's it:
 ### TODO
 
 - Migrate observability to Open Telemetry
-- Replace application.properties files with Spring Cloud Config Server
 - Include login mecanism
  

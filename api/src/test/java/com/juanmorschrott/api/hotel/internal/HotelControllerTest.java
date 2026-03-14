@@ -1,5 +1,7 @@
-package com.juanmorschrott.api.hotel;
+package com.juanmorschrott.api.hotel.internal;
 
+import com.juanmorschrott.api.hotel.HotelDto;
+import com.juanmorschrott.api.hotel.HotelService;
 import org.hamcrest.Matchers;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,9 +15,6 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-/**
- * Integration test with Spring Application Context using MockMvc
- */
 @WebMvcTest(HotelController.class)
 public class HotelControllerTest {
 

@@ -1,4 +1,4 @@
-package com.juanmorschrott.api.hotel;
+package com.juanmorschrott.api.hotel.internal;
 
 public class HotelNotFoundException extends RuntimeException {
 

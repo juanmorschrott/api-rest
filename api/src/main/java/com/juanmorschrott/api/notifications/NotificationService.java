@@ -1,9 +1,11 @@
 package com.juanmorschrott.api.notifications;
 
-import com.juanmorschrott.api.hotel.HotelCreatedEvent;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.modulith.events.ApplicationModuleListener;
 import org.springframework.stereotype.Service;
+
+import com.juanmorschrott.api.hotel.HotelCreatedEvent;
+
+import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @Service

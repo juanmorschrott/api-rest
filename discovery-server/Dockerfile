@@ -6,4 +6,4 @@ RUN mvn clean package -DskipTests
 FROM amazoncorretto:21-alpine
 COPY --from=builder /usr/src/app/target/*.jar /app/discovery-server.jar
 WORKDIR /app
-CMD ["java", "-jar", "-Dspring.profiles.active=production", "discovery-server.jar"]
+CMD ["java", "-jar", "discovery-server.jar"]

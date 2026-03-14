@@ -1,5 +1,6 @@
-package com.juanmorschrott.api.hotel;
+package com.juanmorschrott.api.hotel.internal;
 
+import com.juanmorschrott.api.hotel.HotelDto;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 

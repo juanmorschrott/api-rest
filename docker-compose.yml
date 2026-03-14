@@ -11,13 +11,31 @@ services:
     ports:
       - 80:80
 
+  config-server:
+    image: config-server
+    build:
+      context: ./config-server
+    networks:
+      - private
+    ports:
+      - 8888:8888
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8888/actuator/health"]
+      interval: 5s
+      timeout: 3s
+      retries: 5
+
   gateway:
     image: gateway
     build:
       context: ./gateway
+    depends_on:
+      config-server:
+        condition: service_healthy
     networks:
       - public
       - private
+    restart: always
     ports:
       - 8080:8080
 
@@ -25,8 +43,12 @@ services:
     image: discovery-server
     build:
       context: ./discovery-server
+    depends_on:
+      config-server:
+        condition: service_healthy
     networks:
       - private
+    restart: always
     ports:
       - 8761:8761
 
@@ -35,13 +57,13 @@ services:
     build:
       context: ./api
     depends_on:
+      config-server:
+        condition: service_healthy
       db:
         condition: service_healthy
     networks:
       - private
       - monitoring
-    environment:
-      - MYSQL_HOST=db
     restart: always
     deploy:
       replicas: 2
