@@ -11,7 +11,7 @@ import java.util.List;
 @RestController
 @RequestMapping(value = "/api/v1/hotels")
 @RequiredArgsConstructor
-public class HotelController {
+class HotelController {
 
     private final HotelService service;
 
@@ -26,17 +26,17 @@ public class HotelController {
     }
 
     @GetMapping(value = "/{id}")
-    public ResponseEntity<HotelDto> get(@PathVariable Long id) {
+    public ResponseEntity<HotelDto> get(@PathVariable("id") Long id) {
         return ResponseEntity.ok().body(service.get(id));
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<HotelDto> update(@PathVariable Long id, @Valid @RequestBody HotelDto hotelDto) {
+    public ResponseEntity<HotelDto> update(@PathVariable("id") Long id, @Valid @RequestBody HotelDto hotelDto) {
         return ResponseEntity.ok().body(service.update(id, hotelDto));
     }
 
     @DeleteMapping(value = "/{id}")
-    public ResponseEntity<Void> delete(@PathVariable Long id) {
+    public ResponseEntity<Void> delete(@PathVariable("id") Long id) {
         service.delete(id);
 
         return ResponseEntity.status(HttpStatus.NO_CONTENT).build();

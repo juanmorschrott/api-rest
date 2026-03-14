@@ -7,7 +7,7 @@ import java.util.Optional;
 
 
 @Repository
-public interface HotelRepository extends JpaRepository<Hotel, Long> {
+interface HotelRepository extends JpaRepository<Hotel, Long> {
 
     Optional<Hotel> findById(Long id);
 

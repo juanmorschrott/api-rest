@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 
 @Hidden
 @ControllerAdvice
-public class HotelAdvice {
+class HotelAdvice {
 
     @ResponseBody
     @ExceptionHandler(HotelNotFoundException.class)

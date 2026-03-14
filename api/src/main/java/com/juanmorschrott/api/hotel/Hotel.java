@@ -14,7 +14,7 @@ import java.math.BigDecimal;
 @NoArgsConstructor
 @Table(name = "hotel")
 @ToString
-public class Hotel implements Serializable {
+class Hotel implements Serializable {
 
     @Serial
     private static final long serialVersionUID = 1L;

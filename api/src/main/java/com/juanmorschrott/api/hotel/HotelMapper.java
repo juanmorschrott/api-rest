@@ -6,7 +6,7 @@ import org.mapstruct.Mapping;
 import java.util.List;
 
 @Mapper(componentModel = "spring")
-public interface HotelMapper {
+interface HotelMapper {
 
     @Mapping(target = "id", source = "id")
     Hotel toEntity(HotelDto hotelDto);

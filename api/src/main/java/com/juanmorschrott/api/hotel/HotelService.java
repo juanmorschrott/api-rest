@@ -1,7 +1,9 @@
 package com.juanmorschrott.api.hotel;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -11,28 +13,36 @@ public class HotelService {
 
     private final HotelRepository repository;
     private final HotelMapper mapper;
+    private final ApplicationEventPublisher events;
 
+    @Transactional(readOnly = true)
     public List<HotelDto> list() {
         return mapper.toDtoList(repository.findAll());
     }
 
+    @Transactional
     public HotelDto create(HotelDto hotelDto) {
         Hotel hotel = mapper.toEntity(hotelDto);
-        return mapper.toDto(repository.save(hotel));
+        Hotel savedHotel = repository.save(hotel);
+        events.publishEvent(new HotelCreatedEvent(savedHotel.getId(), savedHotel.getName()));
+        return mapper.toDto(savedHotel);
     }
 
+    @Transactional(readOnly = true)
     public HotelDto get(Long id) {
         return repository.findById(id)
                 .map(mapper::toDto)
                 .orElseThrow(() -> new HotelNotFoundException(id));
     }
 
+    @Transactional(readOnly = true)
     public HotelDto getByName(String name) {
         return repository.findByName(name)
                 .map(mapper::toDto)
                 .orElseThrow(() -> new HotelNotFoundException(name));
     }
 
+    @Transactional
     public HotelDto update(Long id, HotelDto hotelDto) {
         return repository.findById(id)
                 .map(existingHotel -> {
@@ -43,6 +53,7 @@ public class HotelService {
                 .orElseThrow(() -> new HotelNotFoundException(id));
     }
 
+    @Transactional
     public void delete(Long id) {
         repository.findById(id).ifPresent(repository::delete);
     }
