@@ -1,5 +1,6 @@
 package com.juanmorschrott.api.hotel;
 
+import com.juanmorschrott.api.hotel.internal.HotelFixtures;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.resttestclient.TestRestTemplate;
@@ -24,7 +25,7 @@ import static org.mockito.BDDMockito.given;
 @Testcontainers
 @AutoConfigureTestRestTemplate
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-public class HotelControllerIntegrationTest {
+public class HotelIntegrationTest {
 
     @Container
     @ServiceConnection
