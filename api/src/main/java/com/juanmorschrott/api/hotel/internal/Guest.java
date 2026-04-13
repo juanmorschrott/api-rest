@@ -2,7 +2,6 @@ package com.juanmorschrott.api.hotel.internal;
 
 import java.io.Serial;
 import java.io.Serializable;
-import java.math.BigDecimal;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -21,23 +20,23 @@ import lombok.ToString;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "hotel")
+@Table(name = "guest")
 @ToString
-public class Hotel implements Serializable {
+public class Guest implements Serializable {
 
     @Serial
     private static final long serialVersionUID = 1L;
-
+    
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "hotel_id")
-    private Long hotelId;
+    @Column(name = "guest_id")
+    private Long guestId;
 
-    private String name;
+    @Column(name = "first_name", nullable = false)
+    private String firstName;
 
-    private String address;
+    @Column(name = "last_name", nullable = false)
+    private String lastName;
 
-    private BigDecimal latitude;
-
-    private BigDecimal longitude;
+    private String email;
 }

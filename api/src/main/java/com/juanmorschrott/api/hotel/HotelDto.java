@@ -2,19 +2,20 @@ package com.juanmorschrott.api.hotel;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Positive;
 
 public record HotelDto(
 
-                Long id,
+                Long hotelId,
 
                 @NotBlank(message = "Name is required")
                 String name,
 
-                @NotBlank(message = "Description is required")
-                String description,
+                @NotBlank(message = "Address is required")
+                String address,
 
-                @NotNull(message = "Price is required")
-                @Positive
-                Double price
+                @NotNull(message = "Latitude is required")
+                Double latitude,
+
+                @NotNull(message = "Longitude is required")
+                Double longitude
 ) {}

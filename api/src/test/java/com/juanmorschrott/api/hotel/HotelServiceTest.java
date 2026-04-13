@@ -63,7 +63,7 @@ public class HotelServiceTest {
         HotelDto found = hotelService.get(1L);
 
         // then
-        assertThat(found.id()).isEqualTo(1L);
+        assertThat(found.hotelId()).isEqualTo(1L);
     }
 
     @Test
@@ -71,7 +71,7 @@ public class HotelServiceTest {
         // given
         Hotel hotel = HotelFixtures.hotel;
         HotelDto hotelDto = HotelFixtures.hotelDto;
-        String name = "Foo";
+        String name = "Atenea";
 
         // when
         when(hotelRepository.findByName(anyString())).thenReturn(of(hotel));

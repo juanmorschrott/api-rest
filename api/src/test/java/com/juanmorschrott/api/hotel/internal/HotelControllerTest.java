@@ -35,8 +35,8 @@ public class HotelControllerTest {
         // then
         mockMvc.perform(get("/api/v1/hotels/1").contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$.id", Matchers.is(1)))
-                .andExpect(jsonPath("$.name", Matchers.is("Foo")));
+                .andExpect(jsonPath("$.hotelId", Matchers.is(1)))
+                .andExpect(jsonPath("$.name", Matchers.is("Atenea")));
     }
 
     @Test

@@ -31,22 +31,34 @@ public class HotelRepositoryTest {
     @Test
     public void whenFindById_thenReturnHotel() {
         // given
-        Hotel hotel = new Hotel(1L, "Test Name", "Test Description", BigDecimal.valueOf(99.9));
-        entityManager.merge(hotel);
+        Hotel hotel = new Hotel(
+            null,
+            "Test Name",
+            "Calle Gran Via 1, Madrid",
+            BigDecimal.valueOf(40.4168000),
+            BigDecimal.valueOf(-3.7037900)
+        );
+        entityManager.persist(hotel);
         entityManager.flush();
 
         // when
-        Optional<Hotel> found = hotelRepository.findById(hotel.getId());
+        Optional<Hotel> found = hotelRepository.findById(hotel.getHotelId());
 
         // then
-        assertThat(found.get().getId()).isEqualTo(hotel.getId());
+        assertThat(found.get().getHotelId()).isEqualTo(hotel.getHotelId());
     }
 
     @Test
     public void whenFindByName_thenReturnHotel() {
         // given
-        Hotel hotel = new Hotel(1L, "Test Name", "Test Description", BigDecimal.valueOf(99.9));
-        entityManager.merge(hotel);
+        Hotel hotel = new Hotel(
+            null,
+            "Test Name",
+            "Calle Gran Via 1, Madrid",
+            BigDecimal.valueOf(40.4168000),
+            BigDecimal.valueOf(-3.7037900)
+        );
+        entityManager.persist(hotel);
         entityManager.flush();
 
         // when

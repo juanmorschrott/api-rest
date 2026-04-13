@@ -6,40 +6,148 @@
         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
 
     <changeSet id="2" author="juan">
+        <!-- Hotels -->
         <insert tableName="hotel">
             <column name="name" value="Atenea"/>
-            <column name="description" value="Hotel economico y confortable"/>
-            <column name="price" value="34.5"/>
+            <column name="address" value="Calle Mayor 10, Madrid"/>
+            <column name="latitude" value="40.4168000"/>
+            <column name="longitude" value="-3.7037900"/>
         </insert>
         <insert tableName="hotel">
             <column name="name" value="Kontiki"/>
-            <column name="description" value="Gran calidad"/>
-            <column name="price" value="104.5"/>
+            <column name="address" value="Avenida del Mar 5, Barcelona"/>
+            <column name="latitude" value="41.3851000"/>
+            <column name="longitude" value="2.1734000"/>
         </insert>
         <insert tableName="hotel">
             <column name="name" value="Apollo"/>
-            <column name="description" value="Hotel economico y confortable"/>
-            <column name="price" value="34.54"/>
+            <column name="address" value="Plaza España 2, Sevilla"/>
+            <column name="latitude" value="37.3891000"/>
+            <column name="longitude" value="-5.9844600"/>
         </insert>
         <insert tableName="hotel">
             <column name="name" value="Oleander"/>
-            <column name="description" value="Gran calidad"/>
-            <column name="price" value="104.5"/>
+            <column name="address" value="Paseo de la Castellana 45, Madrid"/>
+            <column name="latitude" value="40.4510000"/>
+            <column name="longitude" value="-3.6900000"/>
         </insert>
-        <insert tableName="hotel">
-            <column name="name" value="Gran Playa"/>
-            <column name="description" value="Hotel economico y confortable"/>
-            <column name="price" value="34.556"/>
+
+        <!-- Rooms -->
+        <insert tableName="room">
+            <column name="floor" value="1"/>
+            <column name="number" value="101"/>
+            <column name="hotel_id" value="1"/>
+            <column name="name" value="Doble Confort"/>
+            <column name="is_available" valueBoolean="true"/>
         </insert>
-        <insert tableName="hotel">
-            <column name="name" value="Riu Palace"/>
-            <column name="description" value="Hotel economico y confortable"/>
-            <column name="price" value="34.5"/>
+        <insert tableName="room">
+            <column name="floor" value="2"/>
+            <column name="number" value="202"/>
+            <column name="hotel_id" value="1"/>
+            <column name="name" value="Suite Junior"/>
+            <column name="is_available" valueBoolean="false"/>
         </insert>
-        <insert tableName="hotel">
-            <column name="name" value="Carioca"/>
-            <column name="description" value="Gran calidad"/>
-            <column name="price" value="104.5"/>
+        <insert tableName="room">
+            <column name="floor" value="3"/>
+            <column name="number" value="305"/>
+            <column name="hotel_id" value="2"/>
+            <column name="name" value="Doble Superior"/>
+            <column name="is_available" valueBoolean="true"/>
+        </insert>
+        <insert tableName="room">
+            <column name="floor" value="1"/>
+            <column name="number" value="110"/>
+            <column name="hotel_id" value="3"/>
+            <column name="name" value="Individual"/>
+            <column name="is_available" valueBoolean="true"/>
+        </insert>
+
+        <!-- Room type rates -->
+        <insert tableName="room_type_rate">
+            <column name="hotel_id" value="1"/>
+            <column name="date" value="2026-05-01"/>
+            <column name="rate" value="85.00"/>
+        </insert>
+        <insert tableName="room_type_rate">
+            <column name="hotel_id" value="1"/>
+            <column name="date" value="2026-05-02"/>
+            <column name="rate" value="92.50"/>
+        </insert>
+        <insert tableName="room_type_rate">
+            <column name="hotel_id" value="2"/>
+            <column name="date" value="2026-05-01"/>
+            <column name="rate" value="120.00"/>
+        </insert>
+        <insert tableName="room_type_rate">
+            <column name="hotel_id" value="3"/>
+            <column name="date" value="2026-05-03"/>
+            <column name="rate" value="75.00"/>
+        </insert>
+
+        <!-- Guests -->
+        <insert tableName="guest">
+            <column name="first_name" value="María"/>
+            <column name="last_name" value="García"/>
+            <column name="email" value="maria.garcia@example.com"/>
+        </insert>
+        <insert tableName="guest">
+            <column name="first_name" value="Javier"/>
+            <column name="last_name" value="López"/>
+            <column name="email" value="javier.lopez@example.com"/>
+        </insert>
+        <insert tableName="guest">
+            <column name="first_name" value="Elena"/>
+            <column name="last_name" value="Martínez"/>
+            <column name="email" value="elena.martinez@example.com"/>
+        </insert>
+
+        <!-- Room type inventory -->
+        <insert tableName="room_type_inventory">
+            <column name="hotel_id" value="1"/>
+            <column name="room_type_id" value="1"/>
+            <column name="date" value="2026-05-01"/>
+            <column name="total_inventory" value="10"/>
+            <column name="total_reserved" value="2"/>
+        </insert>
+        <insert tableName="room_type_inventory">
+            <column name="hotel_id" value="1"/>
+            <column name="room_type_id" value="2"/>
+            <column name="date" value="2026-05-01"/>
+            <column name="total_inventory" value="5"/>
+            <column name="total_reserved" value="1"/>
+        </insert>
+        <insert tableName="room_type_inventory">
+            <column name="hotel_id" value="2"/>
+            <column name="room_type_id" value="1"/>
+            <column name="date" value="2026-05-03"/>
+            <column name="total_inventory" value="8"/>
+            <column name="total_reserved" value="3"/>
+        </insert>
+
+        <!-- Reservations -->
+        <insert tableName="reservation">
+            <column name="hotel_id" value="1"/>
+            <column name="room_type_id" value="1"/>
+            <column name="start_date" value="2026-05-01"/>
+            <column name="end_date" value="2026-05-04"/>
+            <column name="status" value="CONFIRMED"/>
+            <column name="guest_id" value="1"/>
+        </insert>
+        <insert tableName="reservation">
+            <column name="hotel_id" value="1"/>
+            <column name="room_type_id" value="2"/>
+            <column name="start_date" value="2026-05-05"/>
+            <column name="end_date" value="2026-05-07"/>
+            <column name="status" value="PENDING"/>
+            <column name="guest_id" value="2"/>
+        </insert>
+        <insert tableName="reservation">
+            <column name="hotel_id" value="2"/>
+            <column name="room_type_id" value="1"/>
+            <column name="start_date" value="2026-05-10"/>
+            <column name="end_date" value="2026-05-12"/>
+            <column name="status" value="CANCELLED"/>
+            <column name="guest_id" value="3"/>
         </insert>
     </changeSet>
 

@@ -85,7 +85,7 @@ public class HotelIntegrationTest {
     public void whenUpdate_thenUpdatedHotel() {
         // given
         HotelDto hotelDto = HotelFixtures.hotelDto;
-        HotelDto updatedHotelDto = new HotelDto(1L, "Updated Foo", "Test Description", 99.9);
+        HotelDto updatedHotelDto = new HotelDto(1L, "Updated Hotel", "456 Updated St", 40.7128, -74.0060);
         given(hotelService.update(1L, hotelDto)).willReturn(updatedHotelDto);
 
         // when

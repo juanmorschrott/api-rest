@@ -30,7 +30,7 @@ public class HotelService {
     public HotelDto create(HotelDto hotelDto) {
         Hotel hotel = mapper.toEntity(hotelDto);
         Hotel savedHotel = repository.save(hotel);
-        events.publishEvent(new HotelCreatedEvent(savedHotel.getId(), savedHotel.getName()));
+        events.publishEvent(new HotelCreatedEvent(savedHotel.getHotelId(), savedHotel.getName()));
         return mapper.toDto(savedHotel);
     }
 
@@ -53,7 +53,7 @@ public class HotelService {
         return repository.findById(id)
                 .map(existingHotel -> {
                     Hotel hotel = mapper.toEntity(hotelDto);
-                    hotel.setId(id);
+                    hotel.setHotelId(id);
                     return mapper.toDto(repository.save(hotel));
                 })
                 .orElseThrow(() -> new HotelNotFoundException(id));

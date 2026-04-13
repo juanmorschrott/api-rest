@@ -10,7 +10,7 @@ import com.juanmorschrott.api.hotel.HotelDto;
 @Mapper(componentModel = "spring")
 public interface HotelMapper {
 
-    @Mapping(target = "id", source = "id")
+    @Mapping(target = "hotelId", source = "hotelId")
     Hotel toEntity(HotelDto hotelDto);
 
     HotelDto toDto(Hotel hotel);
