@@ -14,13 +14,13 @@ export const hotelService = {
     return response.data;
   },
 
-  createHotel: async (hotel: Omit<Hotel, 'id'>): Promise<Hotel> => {
+  createHotel: async (hotel: Omit<Hotel, 'hotelId'>): Promise<Hotel> => {
     const response = await axios.post(API_URL, hotel);
     return response.data;
   },
 
   updateHotel: async (hotel: Hotel): Promise<Hotel> => {
-    const response = await axios.put(`${API_URL}/${hotel.id}`, hotel);
+    const response = await axios.put(`${API_URL}/${hotel.hotelId}`, hotel);
     return response.data;
   },
 

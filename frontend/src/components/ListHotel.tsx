@@ -22,19 +22,19 @@ export default function ListHotel() {
 
   const deleteHotel = async (hotel: Hotel) => {
     try {
-      await hotelService.deleteHotel(hotel.id);
-      setHotels(hotels.filter(h => h.id !== hotel.id));
+      await hotelService.deleteHotel(hotel.hotelId);
+      setHotels(hotels.filter(h => h.hotelId !== hotel.hotelId));
     } catch (error) {
       console.error('Error deleting hotel:', error);
     }
   };
 
   const editHotel = (hotel: Hotel) => {
-    navigate(`/edit-hotel/${hotel.id}`);
+    navigate(`/edit-hotel/${hotel.hotelId}`);
   };
 
   const hotelDetails = (hotel: Hotel) => {
-    navigate(`/hotel-detail/${hotel.id}`);
+    navigate(`/hotel-detail/${hotel.hotelId}`);
   };
 
   const addHotel = () => {
@@ -53,18 +53,20 @@ export default function ListHotel() {
             <tr>
               <th className="d-none">Id</th>
               <th>Name</th>
-              <th>Description</th>
-              <th>Mean Room Price</th>
+              <th>Address</th>
+              <th>Latitude</th>
+              <th>Longitude</th>
               <th>Action</th>
             </tr>
           </thead>
           <tbody>
             {hotels.map(hotel => (
-              <tr key={hotel.id}>
-                <td className="d-none">{hotel.id}</td>
+              <tr key={hotel.hotelId}>
+                <td className="d-none">{hotel.hotelId}</td>
                 <td>{hotel.name}</td>
-                <td>{hotel.description}</td>
-                <td>{new Intl.NumberFormat('en-US', { style: 'currency', currency: 'EUR' }).format(hotel.price)}</td>
+                <td>{hotel.address}</td>
+                <td>{hotel.latitude}</td>
+                <td>{hotel.longitude}</td>
                 <td>
                   <button className="btn btn-warning me-2" onClick={() => deleteHotel(hotel)}>Delete</button>
                   <button className="btn btn-secondary me-2" onClick={() => editHotel(hotel)}>Edit</button>

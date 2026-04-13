@@ -61,23 +61,34 @@ export default function EditHotel() {
               />
             </div>
             <div className="form-group mb-2">
-              <label htmlFor="description">Description:</label>
+              <label htmlFor="address">Address:</label>
               <input 
-                {...register('description', { required: true })} 
-                placeholder="Description" 
+                {...register('address', { required: true })} 
+                placeholder="Address" 
                 className="form-control" 
-                id="description" 
+                id="address" 
               />
             </div>
             <div className="form-group mb-3">
-              <label htmlFor="price">Price:</label>
+              <label htmlFor="latitude">Latitude:</label>
               <input 
                 type="number"
-                step="0.01"
-                {...register('price', { required: true, valueAsNumber: true })} 
-                placeholder="Mean Room Price" 
+                step="0.0000001"
+                {...register('latitude', { required: true, valueAsNumber: true })} 
+                placeholder="Latitude" 
                 className="form-control" 
-                id="price" 
+                id="latitude" 
+              />
+            </div>
+            <div className="form-group mb-3">
+              <label htmlFor="longitude">Longitude:</label>
+              <input 
+                type="number"
+                step="0.0000001"
+                {...register('longitude', { required: true, valueAsNumber: true })} 
+                placeholder="Longitude" 
+                className="form-control" 
+                id="longitude" 
               />
             </div>
             <button type="submit" className="btn btn-primary me-2">Update</button>

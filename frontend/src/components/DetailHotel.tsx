@@ -47,10 +47,13 @@ export default function DetailHotel() {
             <label><b>Name: </b></label> {hotel.name}
           </div>
           <div className="mb-2">
-            <label><b>Description: </b></label> {hotel.description}
+            <label><b>Address: </b></label> {hotel.address}
           </div>
           <div className="mb-2">
-            <label><b>Mean Room Price: </b></label> {new Intl.NumberFormat('en-US', { style: 'currency', currency: 'EUR' }).format(hotel.price)}
+            <label><b>Latitude: </b></label> {hotel.latitude}
+          </div>
+          <div className="mb-2">
+            <label><b>Longitude: </b></label> {hotel.longitude}
           </div>
           <button onClick={list} className="btn btn-primary mt-3">Back to Hotels List</button>
         </div>
