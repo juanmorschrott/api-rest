@@ -65,8 +65,6 @@ services:
       - private
       - monitoring
     restart: always
-    deploy:
-      replicas: 2
 
   db:
     image: db
@@ -81,6 +79,8 @@ services:
       interval: 5s
       timeout: 5s
       retries: 10
+    volumes:
+      - db-data:/var/lib/mysql
 
   prometheus:
     build:
@@ -102,7 +102,23 @@ services:
     networks:
       - monitoring
 
+  keycloak:
+    build:
+      context: ./keycloak
+    command: start-dev --import-realm
+    environment:
+      KC_BOOTSTRAP_ADMIN_USERNAME: admin
+      KC_BOOTSTRAP_ADMIN_PASSWORD: admin
+    ports:
+      - "8180:8080"
+    networks:
+      - public
+      - private
+
 networks:
   public:
   private:
   monitoring:
+
+volumes:
+  db-data:

@@ -24,22 +24,20 @@ Technologies included:
 
 ```mermaid
 graph TD
-    ConfigStore[(config-repo/)] -.-> Config[Config Server :8888]
-    Config -.-> |Provides config| Gateway
-    Config -.-> |Provides config| Discovery
-    Config -.-> |Provides config| API1
-    Config -.-> |Provides config| API2
-    Client([Client/Frontend React]) --> Gateway[API Gateway :8080]
-    Gateway --> Discovery[Discovery Server :8761]
-    Gateway --> API1[API Instance 1 :8090]
-    Gateway --> API2[API Instance 2 :8090]
-    API1 -.-> |Registers| Discovery
-    API2 -.-> |Registers| Discovery
-    API1 --> DB[(MySQL DB)]
-    API2 --> DB[(MySQL DB)]
-    API1 -.-> Prometheus[Prometheus Metrics]
-    API2 -.-> Prometheus
-    Grafana[Grafana :3000] --> Prometheus[Prometheus :9090]
+    ConfigStore[(config-repo)] -.-> Config[Config Server]
+
+    Client([Frontend])
+    Client -- "Login" --> Keycloak[Keycloak]
+    Client -- "Request" --> Gateway[API Gateway]
+
+    Gateway -.-> |Registers| Discovery[Discovery Server]
+    Gateway --> API[API]
+    
+    API -.-> |Registers| Discovery
+    API --> DB[(MySQL DB)]
+    
+    API -.-> Prometheus[Prometheus]
+    Grafana[Grafana] --> Prometheus
 ```
 
 ## Dependencies
@@ -99,10 +97,9 @@ Dashboard: [http://localhost:8761](http://localhost:8761)
 
 ### Api
 
-Spring-boot WEB CRUD Application using a modular architecture. The service is scaled to 2 replicas for load balancing.
+Spring-boot WEB CRUD Application using a modular architecture. Secured via Keycloak OAuth2 Resource Server.
 
 BASE-URL: http://localhost:8080/api/v1/hotels (via Gateway)
-Direct Instance Access: http://localhost:8090/api/v1/hotels (if exposed)
 
 | OPERATION | METHOD | URI                  | SUCCESS STATUS                   |
 |-----------|--------|----------------------|----------------------------------|
@@ -141,6 +138,4 @@ And that's it:
 
 ### TODO
 
-- Migrate observability to Open Telemetry
-- Include login mecanism
- 
+- Migrate observability to Open Telemetry 
