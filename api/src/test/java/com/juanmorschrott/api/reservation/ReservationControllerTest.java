@@ -1,4 +1,7 @@
-package com.juanmorschrott.api.reservation.internal;
+package com.juanmorschrott.api.reservation;
+
+import com.juanmorschrott.api.reservation.internal.ReservationFixtures;
+import com.juanmorschrott.api.reservation.internal.ReservationNotFoundException;
 
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
@@ -13,8 +16,6 @@ import org.springframework.http.MediaType;
 import org.springframework.test.context.bean.override.mockito.MockitoBean;
 import org.springframework.test.web.servlet.MockMvc;
 
-import com.juanmorschrott.api.reservation.ReservationDto;
-import com.juanmorschrott.api.reservation.ReservationService;
 
 @WebMvcTest(ReservationController.class)
 public class ReservationControllerTest {

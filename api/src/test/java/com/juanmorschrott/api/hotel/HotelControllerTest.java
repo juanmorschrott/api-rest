@@ -1,7 +1,8 @@
-package com.juanmorschrott.api.hotel.internal;
+package com.juanmorschrott.api.hotel;
 
-import com.juanmorschrott.api.hotel.HotelDto;
-import com.juanmorschrott.api.hotel.HotelService;
+import com.juanmorschrott.api.hotel.internal.HotelFixtures;
+import com.juanmorschrott.api.hotel.internal.HotelNotFoundException;
+
 import org.hamcrest.Matchers;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

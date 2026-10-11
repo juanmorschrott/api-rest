@@ -1,6 +1,7 @@
 package com.juanmorschrott.api.hotel;
 
 import com.juanmorschrott.api.hotel.internal.HotelFixtures;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.resttestclient.TestRestTemplate;
@@ -9,11 +10,14 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.testcontainers.service.connection.ServiceConnection;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.*;
+import org.springframework.security.oauth2.jwt.Jwt;
+import org.springframework.security.oauth2.jwt.JwtDecoder;
 import org.springframework.test.context.bean.override.mockito.MockitoBean;
 import org.testcontainers.containers.MySQLContainer;
 import org.testcontainers.junit.jupiter.Container;
 import org.testcontainers.junit.jupiter.Testcontainers;
 
+import java.time.Instant;
 import java.util.List;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
@@ -35,8 +39,27 @@ public class HotelIntegrationTest {
     @MockitoBean
     private HotelService hotelService;
 
+    // The real JWK set URI lives in the config server, which is disabled in tests
+    @MockitoBean
+    private JwtDecoder jwtDecoder;
+
     @Autowired
     private TestRestTemplate restTemplate;
+
+    @BeforeEach
+    void authenticate() {
+        Jwt jwt = Jwt.withTokenValue("test-token")
+                .header("alg", "none")
+                .subject("test-user")
+                .issuedAt(Instant.now())
+                .expiresAt(Instant.now().plusSeconds(300))
+                .build();
+        given(jwtDecoder.decode("test-token")).willReturn(jwt);
+        restTemplate.getRestTemplate().getInterceptors().add((request, body, execution) -> {
+            request.getHeaders().setBearerAuth("test-token");
+            return execution.execute(request, body);
+        });
+    }
 
     @Test
     public void whenList_thenReturnHotels() {

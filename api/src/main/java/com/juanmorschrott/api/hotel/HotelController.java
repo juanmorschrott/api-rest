@@ -1,4 +1,4 @@
-package com.juanmorschrott.api.hotel.internal;
+package com.juanmorschrott.api.hotel;
 
 import java.util.List;
 
@@ -13,8 +13,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.juanmorschrott.api.hotel.HotelDto;
-import com.juanmorschrott.api.hotel.HotelService;
 
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;

@@ -1,4 +1,4 @@
-package com.juanmorschrott.api.reservation.internal;
+package com.juanmorschrott.api.reservation;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -15,9 +15,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.juanmorschrott.api.reservation.AvailabilityDto;
-import com.juanmorschrott.api.reservation.ReservationDto;
-import com.juanmorschrott.api.reservation.ReservationService;
 
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
