@@ -42,7 +42,7 @@ graph TD
 
 ## Dependencies
 
- - Java openjdk version >=21
+ - Java openjdk version >=25
  - Maven >=3.9.11
  - Node >= 18.20.8
  - Docker & docker-compose
