@@ -42,13 +42,13 @@ public class ReservationService {
         reservation = reservationRepository.save(reservation);
 
         // 2. For each date in the range, atomically reserve a room
-        for (LocalDate date = dto.startDate(); date.isBefore(dto.endDate()); date = date.plusDays(1)) {
+        dto.startDate().datesUntil(dto.endDate()).forEach(date -> {
             int updated = inventoryRepository.reserveRoom(dto.hotelId(), dto.roomTypeId(), date);
             if (updated == 0) {
                 // No availability for this date → exception triggers transaction rollback
                 throw new RoomNotAvailableException(dto.hotelId(), dto.roomTypeId(), date);
             }
-        }
+        });
 
         // 3. All dates reserved successfully → mark as CONFIRMED
         reservation.setStatus(Status.CONFIRMED);
@@ -87,12 +87,9 @@ public class ReservationService {
         }
 
         // Release inventory for each date in the range
-        for (LocalDate date = reservation.getStartDate();
-             date.isBefore(reservation.getEndDate());
-             date = date.plusDays(1)) {
-            inventoryRepository.releaseRoom(
-                    reservation.getHotelId(), reservation.getRoomTypeId(), date);
-        }
+        reservation.getStartDate().datesUntil(reservation.getEndDate())
+                .forEach(date -> inventoryRepository.releaseRoom(
+                        reservation.getHotelId(), reservation.getRoomTypeId(), date));
 
         reservation.setStatus(Status.CANCELLED);
         reservationRepository.save(reservation);
@@ -108,9 +105,9 @@ public class ReservationService {
 
         return inventories.stream()
                 .map(inv -> new AvailabilityDto(
-                        inv.getId().getHotelId(),
-                        inv.getId().getRoomTypeId(),
-                        inv.getId().getDate(),
+                        inv.getId().hotelId(),
+                        inv.getId().roomTypeId(),
+                        inv.getId().date(),
                         inv.getTotalInventory(),
                         inv.getTotalReserved(),
                         inv.getAvailableRooms()))
