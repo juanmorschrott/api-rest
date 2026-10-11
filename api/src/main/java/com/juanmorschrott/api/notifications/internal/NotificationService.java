@@ -1,4 +1,4 @@
-package com.juanmorschrott.api.notifications;
+package com.juanmorschrott.api.notifications.internal;
 
 import org.springframework.modulith.events.ApplicationModuleListener;
 import org.springframework.stereotype.Service;
@@ -10,7 +10,7 @@ import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @Service
-public class NotificationService {
+class NotificationService {
 
     /**
      * Handles the HotelCreatedEvent and sends a simulated notification email.
