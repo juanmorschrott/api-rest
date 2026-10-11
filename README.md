@@ -67,7 +67,7 @@ $ cd ./frontend
 $ npx cypress open --e2e
 ```
 
-![cypress](documentation/cypress.png)
+![cypress](docs/cypress.png)
 
 ## Components
 
@@ -134,7 +134,7 @@ Access to Grafana Dashboard: [http://localhost:3000](http://localhost:3000):
 
 And that's it:
 
-![grafana](documentation/grafana.png)
+![grafana](docs/grafana.png)
 
 ### TODO
 
