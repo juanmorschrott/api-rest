@@ -4,9 +4,7 @@ import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.List;
 
-import com.juanmorschrott.api.reservation.ReservationDto;
 
-import com.juanmorschrott.api.reservation.Status;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 

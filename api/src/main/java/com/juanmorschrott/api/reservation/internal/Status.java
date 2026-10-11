@@ -1,4 +1,4 @@
-package com.juanmorschrott.api.reservation;
+package com.juanmorschrott.api.reservation.internal;
 
 public enum Status {
     PENDING,

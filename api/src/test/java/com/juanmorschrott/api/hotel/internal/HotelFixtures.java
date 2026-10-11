@@ -4,7 +4,6 @@ import java.math.BigDecimal;
 import java.util.Arrays;
 import java.util.List;
 
-import com.juanmorschrott.api.hotel.HotelDto;
 
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;

@@ -12,7 +12,21 @@ const login = () => {
   })
 }
 
+const waitForApi = (attempt = 0) => {
+  cy.request({ url: 'http://localhost:8080/api/v1/hotels', failOnStatusCode: false }).then((res) => {
+    if (res.status === 503 || res.status === 502 || res.status === 404) {
+      expect(attempt, 'API ready').to.be.lessThan(30)
+      cy.wait(2000)
+      waitForApi(attempt + 1)
+    }
+  })
+}
+
 describe('Hotels E2E', () => {
+  before(() => {
+    waitForApi()
+  })
+
   beforeEach(() => {
     login()
   })

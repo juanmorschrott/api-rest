@@ -1,5 +1,6 @@
-package com.juanmorschrott.api.reservation;
+package com.juanmorschrott.api.reservation.internal;
 
+import com.juanmorschrott.api.reservation.ReservationCreatedEvent;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -7,13 +8,6 @@ import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.juanmorschrott.api.reservation.internal.Reservation;
-import com.juanmorschrott.api.reservation.internal.ReservationMapper;
-import com.juanmorschrott.api.reservation.internal.ReservationNotFoundException;
-import com.juanmorschrott.api.reservation.internal.ReservationRepository;
-import com.juanmorschrott.api.reservation.internal.RoomNotAvailableException;
-import com.juanmorschrott.api.reservation.internal.RoomTypeInventory;
-import com.juanmorschrott.api.reservation.internal.RoomTypeInventoryRepository;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

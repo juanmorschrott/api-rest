@@ -1,14 +1,5 @@
-package com.juanmorschrott.api.reservation;
+package com.juanmorschrott.api.reservation.internal;
 
-import com.juanmorschrott.api.reservation.internal.Reservation;
-import com.juanmorschrott.api.reservation.internal.ReservationFixtures;
-import com.juanmorschrott.api.reservation.internal.ReservationMapper;
-import com.juanmorschrott.api.reservation.internal.ReservationNotFoundException;
-import com.juanmorschrott.api.reservation.internal.ReservationRepository;
-import com.juanmorschrott.api.reservation.internal.RoomNotAvailableException;
-import com.juanmorschrott.api.reservation.internal.RoomTypeInventory;
-import com.juanmorschrott.api.reservation.internal.RoomTypeInventoryId;
-import com.juanmorschrott.api.reservation.internal.RoomTypeInventoryRepository;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;

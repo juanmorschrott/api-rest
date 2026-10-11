@@ -5,7 +5,6 @@ import java.util.List;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 
-import com.juanmorschrott.api.hotel.HotelDto;
 
 @Mapper(componentModel = "spring")
 public interface HotelMapper {

@@ -1,4 +1,4 @@
-package com.juanmorschrott.api.reservation;
+package com.juanmorschrott.api.reservation.internal;
 
 import java.time.LocalDate;
 import java.util.List;

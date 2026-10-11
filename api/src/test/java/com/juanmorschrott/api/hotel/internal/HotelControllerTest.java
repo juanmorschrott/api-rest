@@ -1,7 +1,5 @@
-package com.juanmorschrott.api.hotel;
+package com.juanmorschrott.api.hotel.internal;
 
-import com.juanmorschrott.api.hotel.internal.HotelFixtures;
-import com.juanmorschrott.api.hotel.internal.HotelNotFoundException;
 
 import org.hamcrest.Matchers;
 import org.junit.jupiter.api.Test;

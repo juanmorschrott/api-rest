@@ -5,7 +5,6 @@ import java.util.List;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 
-import com.juanmorschrott.api.reservation.ReservationDto;
 
 @Mapper(componentModel = "spring")
 public interface ReservationMapper {

@@ -1,15 +1,12 @@
-package com.juanmorschrott.api.hotel;
+package com.juanmorschrott.api.hotel.internal;
 
+import com.juanmorschrott.api.hotel.HotelCreatedEvent;
 import java.util.List;
 
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.juanmorschrott.api.hotel.internal.Hotel;
-import com.juanmorschrott.api.hotel.internal.HotelMapper;
-import com.juanmorschrott.api.hotel.internal.HotelNotFoundException;
-import com.juanmorschrott.api.hotel.internal.HotelRepository;
 
 import lombok.RequiredArgsConstructor;
 

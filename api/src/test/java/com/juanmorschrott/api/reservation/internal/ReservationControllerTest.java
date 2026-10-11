@@ -1,7 +1,5 @@
-package com.juanmorschrott.api.reservation;
+package com.juanmorschrott.api.reservation.internal;
 
-import com.juanmorschrott.api.reservation.internal.ReservationFixtures;
-import com.juanmorschrott.api.reservation.internal.ReservationNotFoundException;
 
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;

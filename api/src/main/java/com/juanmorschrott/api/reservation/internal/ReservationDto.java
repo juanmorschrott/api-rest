@@ -1,4 +1,4 @@
-package com.juanmorschrott.api.reservation;
+package com.juanmorschrott.api.reservation.internal;
 
 import jakarta.validation.constraints.Future;
 import jakarta.validation.constraints.NotNull;
