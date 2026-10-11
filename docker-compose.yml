@@ -85,10 +85,15 @@ services:
       - db-data:/var/lib/postgresql/data
 
   prometheus:
-    build:
-      context: ./prometheus
+    image: prom/prometheus:v3.5.5
     container_name: prometheus
     restart: unless-stopped
+    command:
+      - --config.file=/etc/prometheus/prometheus.yml
+      - --storage.tsdb.path=/prometheus
+      - --web.console.libraries=/etc/prometheus/console_libraries
+      - --web.console.templates=/etc/prometheus/consoles
+      - --web.enable-lifecycle
     ports:
       - "9090:9090"
     networks:
@@ -97,20 +102,21 @@ services:
       - ./prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
 
   grafana:
-    build:
-      context: ./grafana
+    image: grafana/grafana:13.2.3
     ports:
       - "3000:3000"
     networks:
       - monitoring
 
   keycloak:
-    build:
-      context: ./keycloak
+    image: quay.io/keycloak/keycloak:24.0.4
     command: start-dev --import-realm
     environment:
       KC_BOOTSTRAP_ADMIN_USERNAME: admin
       KC_BOOTSTRAP_ADMIN_PASSWORD: admin
+    volumes:
+      - ./keycloak/realm.json:/opt/keycloak/data/import/realm.json:ro
+      - ./keycloak/theme/bookings:/opt/keycloak/themes/bookings:ro
     ports:
       - "8180:8080"
     networks:
