@@ -6,7 +6,7 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>3.5.4</version>
+		<version>4.0.8</version>
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
 
@@ -17,7 +17,7 @@
 	<description>rest-api discovery server</description>
 	<properties>
 		<java.version>25</java.version>
-		<spring-cloud.version>2025.0.0</spring-cloud.version>
+		<spring-cloud.version>2025.1.1</spring-cloud.version>
 		<maven.version>3.9.11</maven.version>
 	</properties>
 
