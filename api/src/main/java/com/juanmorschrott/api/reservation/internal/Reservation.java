@@ -26,7 +26,7 @@ import lombok.ToString;
 @AllArgsConstructor
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Entity
-@Table(name = "reservation")
+@Table(name = "reservation", schema = "reservation")
 @ToString
 public class Reservation implements Serializable {
 

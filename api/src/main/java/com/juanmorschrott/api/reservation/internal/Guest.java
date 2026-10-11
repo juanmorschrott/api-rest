@@ -1,4 +1,4 @@
-package com.juanmorschrott.api.hotel.internal;
+package com.juanmorschrott.api.reservation.internal;
 
 import java.io.Serial;
 import java.io.Serializable;
@@ -23,7 +23,7 @@ import lombok.ToString;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
 @Entity
-@Table(name = "guest")
+@Table(name = "guest", schema = "reservation")
 @ToString
 public class Guest implements Serializable {
 

@@ -14,7 +14,7 @@ Technologies included:
     - **DTO Pattern** for API/Domain separation
     - **Bean Validation** (JSR 303/380)
     - **RFC 7807** Problem Details for standardized error responses
-    - **Liquibase** for DB migrations
+    - **Flyway** for DB migrations
     - **Testcontainers** for reliable integration testing
     - **Jmeter** test plan
  - **Grafana & Prometheus** for observability

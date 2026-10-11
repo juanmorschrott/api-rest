@@ -1,6 +1,7 @@
 package com.juanmorschrott.api.hotel.internal;
 
 import com.juanmorschrott.api.hotel.HotelCreatedEvent;
+import com.juanmorschrott.api.hotel.HotelDeletedEvent;
 import java.util.List;
 
 import org.springframework.context.ApplicationEventPublisher;
@@ -58,7 +59,10 @@ public class HotelService {
 
     @Transactional
     public void delete(Long id) {
-        repository.findById(id).ifPresent(repository::delete);
+        repository.findById(id).ifPresent(hotel -> {
+            repository.delete(hotel);
+            events.publishEvent(new HotelDeletedEvent(id));
+        });
     }
 
 }

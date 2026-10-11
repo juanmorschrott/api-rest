@@ -21,7 +21,7 @@ import lombok.ToString;
 @Setter
 @Builder
 @Entity
-@Table(name = "room")
+@Table(name = "room", schema = "hotel")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
 @ToString

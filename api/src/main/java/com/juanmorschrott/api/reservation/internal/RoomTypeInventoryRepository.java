@@ -22,6 +22,10 @@ public interface RoomTypeInventoryRepository extends JpaRepository<RoomTypeInven
             @Param("endDate") LocalDate endDate);
 
     @Modifying
+    @Query("DELETE FROM RoomTypeInventory i WHERE i.id.hotelId = :hotelId")
+    void deleteByHotelId(@Param("hotelId") Long hotelId);
+
+    @Modifying
     @Query("UPDATE RoomTypeInventory i SET i.totalReserved = i.totalReserved + 1 " +
            "WHERE i.id.hotelId = :hotelId AND i.id.roomTypeId = :roomTypeId " +
            "AND i.id.date = :date AND i.totalReserved < i.totalInventory")
