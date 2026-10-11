@@ -34,7 +34,7 @@ graph TD
     Gateway --> API[API]
     
     API -.-> |Registers| Discovery
-    API --> DB[(MySQL DB)]
+    API --> DB[(PostgreSQL DB)]
     
     API -.-> Prometheus[Prometheus]
     Grafana[Grafana] --> Prometheus
